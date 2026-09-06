@@ -1,0 +1,4 @@
+---
+deployment:
+  tasks:
+    - /bin/bash /home/asianhea/asian-health-connect/scripts/cpanel-deploy.sh

@@ -1,0 +1,216 @@
+name: Deploy to cPanel
+
+on:
+  workflow_run:
+    workflows:
+      - CI
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: production-deployment
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and deploy
+    if: >-
+      vars.CPANEL_DEPLOY_ENABLED == 'true' &&
+      (
+        github.event_name == 'workflow_dispatch' ||
+        (
+          github.event.workflow_run.event == 'push' &&
+          github.event.workflow_run.head_branch == 'main' &&
+          github.event.workflow_run.conclusion == 'success'
+        )
+      )
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    env:
+      CPANEL_API_BASE: https://sg2.exonhost.com:2083/execute
+      CPANEL_USERNAME: asianhea
+      CPANEL_REPOSITORY_ROOT: /home/asianhea/asian-health-connect
+      DEPLOY_BRANCH: cpanel-deploy
+
+    steps:
+      - name: Check out tested source
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Prepare deployment branch
+        id: prepare
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          source_sha="$(git rev-parse HEAD)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git fetch origin "${DEPLOY_BRANCH}:refs/remotes/origin/${DEPLOY_BRANCH}"; then
+            git switch --create "${DEPLOY_BRANCH}" --track "origin/${DEPLOY_BRANCH}"
+            git merge --no-edit "${source_sha}"
+          else
+            git switch --create "${DEPLOY_BRANCH}" "${source_sha}"
+          fi
+
+          echo "source_sha=${source_sha}" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Build production assets
+        run: |
+          npm ci
+          npm run build
+
+      - name: Publish deployment branch
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git add --force public/build
+          git commit --allow-empty -m "Build deployment for ${{ steps.prepare.outputs.source_sha }}"
+          git push origin "${DEPLOY_BRANCH}"
+
+          echo "deploy_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Update cPanel repository
+        shell: bash
+        env:
+          CPANEL_API_TOKEN: ${{ secrets.CPANEL_API_TOKEN }}
+          DEPLOY_SHA: ${{ steps.publish.outputs.deploy_sha }}
+        run: |
+          set -euo pipefail
+
+          if [[ -z "${CPANEL_API_TOKEN}" ]]; then
+            echo "The CPANEL_API_TOKEN secret is missing." >&2
+            exit 1
+          fi
+
+          encoded_root="$(jq -rn --arg value "${CPANEL_REPOSITORY_ROOT}" '$value | @uri')"
+          auth_header="Authorization: cpanel ${CPANEL_USERNAME}:${CPANEL_API_TOKEN}"
+
+          api_get() {
+            curl --fail-with-body --silent --show-error \
+              --header "${auth_header}" \
+              "${CPANEL_API_BASE}/$1"
+          }
+
+          update_response="$(api_get "VersionControl/update?repository_root=${encoded_root}&branch=${DEPLOY_BRANCH}")"
+
+          if ! jq -e '.result.status == 1' >/dev/null <<<"${update_response}"; then
+            jq '.result' <<<"${update_response}"
+            exit 1
+          fi
+
+          repository_ready=false
+          for attempt in $(seq 1 30); do
+            repository_response="$(api_get 'VersionControl/retrieve')"
+            current_sha="$(
+              jq -r --arg root "${CPANEL_REPOSITORY_ROOT}" \
+                '.result.data[]? | select(.repository_root == $root) | .last_update.identifier // empty' \
+                <<<"${repository_response}"
+            )"
+
+            if [[ "${current_sha}" == "${DEPLOY_SHA}" ]]; then
+              repository_ready=true
+              break
+            fi
+
+            sleep 2
+          done
+
+          if [[ "${repository_ready}" != true ]]; then
+            echo "cPanel did not update to deployment commit ${DEPLOY_SHA}." >&2
+            exit 1
+          fi
+
+      - name: Run cPanel deployment
+        shell: bash
+        env:
+          CPANEL_API_TOKEN: ${{ secrets.CPANEL_API_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          encoded_root="$(jq -rn --arg value "${CPANEL_REPOSITORY_ROOT}" '$value | @uri')"
+          auth_header="Authorization: cpanel ${CPANEL_USERNAME}:${CPANEL_API_TOKEN}"
+
+          api_get() {
+            curl --fail-with-body --silent --show-error \
+              --header "${auth_header}" \
+              "${CPANEL_API_BASE}/$1"
+          }
+
+          create_response="$(api_get "VersionControlDeployment/create?repository_root=${encoded_root}")"
+
+          if ! jq -e '.result.status == 1' >/dev/null <<<"${create_response}"; then
+            jq '.result' <<<"${create_response}"
+            exit 1
+          fi
+
+          deploy_id="$(jq -r '.result.data.deploy_id // empty' <<<"${create_response}")"
+          if [[ -z "${deploy_id}" ]]; then
+            echo "cPanel did not return a deployment ID." >&2
+            exit 1
+          fi
+
+          for attempt in $(seq 1 60); do
+            status_response="$(api_get 'VersionControlDeployment/retrieve')"
+            deployment="$(
+              jq -c --arg id "${deploy_id}" \
+                '.result.data[]? | select((.deploy_id | tostring) == $id)' \
+                <<<"${status_response}"
+            )"
+
+            if [[ -z "${deployment}" ]]; then
+              sleep 3
+              continue
+            fi
+
+            if jq -e '.timestamps.succeeded? != null' >/dev/null <<<"${deployment}"; then
+              echo "cPanel deployment ${deploy_id} succeeded."
+              exit 0
+            fi
+
+            if jq -e '(.timestamps.failed? != null) or (.timestamps.canceled? != null)' >/dev/null <<<"${deployment}"; then
+              log_path="$(jq -r '.log_path // "unknown"' <<<"${deployment}")"
+              echo "cPanel deployment ${deploy_id} failed. Server log: ${log_path}" >&2
+              exit 1
+            fi
+
+            sleep 3
+          done
+
+          echo "Timed out while waiting for cPanel deployment ${deploy_id}." >&2
+          exit 1
+
+      - name: Verify production health
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          for attempt in $(seq 1 12); do
+            if curl --fail --silent --show-error https://asianhealthconnect.com/up >/dev/null; then
+              echo "Production health check passed."
+              exit 0
+            fi
+
+            sleep 5
+          done
+
+          echo "Production health check failed." >&2
+          exit 1

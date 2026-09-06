@@ -1,4 +1,4 @@
-<x-layouts.app title="{{ $hospital->name }} - MediTravel">
+<x-layouts.app title="{{ $hospital->name }} - Asian Health Connect">
     <section class="container-page py-10">
         <div class="grid gap-8 lg:grid-cols-[1fr_.75fr]">
             <div>

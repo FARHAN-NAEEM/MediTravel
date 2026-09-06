@@ -1,4 +1,4 @@
-# MediTravel
+# Asian Health Connect
 
 Bangla-first medical travel platform for doctor appointments, hospitals, treatment cost ranges, visa support, WhatsApp inquiries, and admin CRM tracking.
 
@@ -30,12 +30,15 @@ Admin panel:
 http://127.0.0.1:8000/admin
 ```
 
-Seed admin:
+Before running the production seeder, configure the owner account in `.env`:
 
 ```text
-Email: admin@meditravel.test
-Password: password
+OWNER_ADMIN_NAME="Primary Owner"
+OWNER_ADMIN_EMAIL=owner@example.com
+OWNER_ADMIN_PASSWORD=<a strong temporary password>
 ```
+
+Never commit the production `.env` file or a real owner password. Change the temporary password after the first login.
 
 ## Admin Features
 

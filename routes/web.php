@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\CompareController;
 use App\Http\Controllers\CostEstimatorController;
+use App\Http\Controllers\HotelBookingRequestController;
+use App\Http\Controllers\HotelController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TrackController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,12 +20,17 @@ Route::get('/language/{locale}', function (string $locale) {
 })->name('language.switch');
 
 Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/search', SearchController::class)->name('search');
 
 Route::get('/doctors', [PageController::class, 'doctors'])->name('doctors.index');
 Route::get('/doctors/{doctor}', [PageController::class, 'doctorShow'])->name('doctors.show');
 
 Route::get('/hospitals', [PageController::class, 'hospitals'])->name('hospitals.index');
 Route::get('/hospitals/{hospital}', [PageController::class, 'hospitalShow'])->name('hospitals.show');
+
+Route::get('/hotels', [HotelController::class, 'index'])->name('hotels.index');
+Route::get('/hotels/{hotel}', [HotelController::class, 'show'])->name('hotels.show');
+Route::post('/hotels/{hotel}/booking-requests', [HotelBookingRequestController::class, 'store'])->name('hotels.booking-requests.store');
 
 Route::get('/treatments', [PageController::class, 'treatments'])->name('treatments.index');
 Route::get('/treatments/{treatment}', [PageController::class, 'treatmentShow'])->name('treatments.show');

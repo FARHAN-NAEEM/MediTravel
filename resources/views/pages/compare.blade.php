@@ -1,4 +1,4 @@
-<x-layouts.app :title="__('site.pages.compare') . ' - MediTravel'">
+<x-layouts.app :title="__('site.pages.compare') . ' - Asian Health Connect'">
     <section class="container-page py-10">
         <h1 class="section-title">{{ __('site.pages.compare') }}</h1>
         <form method="POST" class="mt-6 grid gap-4 rounded-lg bg-white p-4 shadow-sm">

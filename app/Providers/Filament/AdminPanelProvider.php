@@ -2,7 +2,9 @@
 
 namespace App\Providers\Filament;
 
-use Filament\Http\Middleware\Authenticate;
+use App\Filament\Pages\Auth\Login as AdminLogin;
+use App\Filament\Pages\Auth\RequestPasswordReset as AdminRequestPasswordReset;
+use App\Http\Middleware\AuthenticateAdmin;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -26,7 +28,11 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->login(AdminLogin::class)
+            ->passwordReset(AdminRequestPasswordReset::class)
+            ->brandName('Asian Health Connect')
+            ->brandLogo(asset('images/asian-health-connect-logo.png'))
+            ->brandLogoHeight('3rem')
             ->colors([
                 'primary' => Color::Teal,
             ])
@@ -52,7 +58,7 @@ class AdminPanelProvider extends PanelProvider
                 DispatchServingFilamentEvent::class,
             ])
             ->authMiddleware([
-                Authenticate::class,
+                AuthenticateAdmin::class,
             ]);
     }
 }

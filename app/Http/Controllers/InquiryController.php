@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inquiry;
+use App\Services\SiteContactService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -40,8 +41,8 @@ class InquiryController extends Controller
 
     private function whatsappUrl(Inquiry $inquiry): string
     {
-        $number = config('services.whatsapp.number', env('WHATSAPP_NUMBER', '8801700000000'));
-        $message = "Hello MediTravel, my reference is {$inquiry->ref_number}. I need help with {$inquiry->type}. Name: {$inquiry->name}, Phone: {$inquiry->phone}.";
+        $number = app(SiteContactService::class)->primaryWhatsappNumber();
+        $message = "Hello Asian Health Connect, my reference is {$inquiry->ref_number}. I need help with {$inquiry->type}. Name: {$inquiry->name}, Phone: {$inquiry->phone}.";
 
         return 'https://wa.me/'.$number.'?text='.rawurlencode($message);
     }

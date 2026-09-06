@@ -5,8 +5,16 @@
 @tailwind utilities;
 
 @layer base {
+    [x-cloak] {
+        display: none !important;
+    }
+
+    html {
+        overflow-x: hidden;
+    }
+
     body {
-        @apply bg-cloud text-navyDeep antialiased;
+        @apply overflow-x-hidden bg-cloud text-navyDeep antialiased;
         font-family: 'Noto Sans Bengali', Inter, ui-sans-serif, system-ui;
     }
 }
@@ -30,5 +38,226 @@
 
     .section-title {
         @apply text-2xl font-bold tracking-normal text-navyDeep md:text-3xl;
+        overflow-wrap: normal;
+        word-break: normal;
+        line-break: auto;
+    }
+
+    .text-wrap-anywhere {
+        overflow-wrap: break-word;
+        word-break: normal;
+        line-break: auto;
+        min-width: 0;
+    }
+
+    .readable-heading {
+        text-wrap: balance;
+        overflow-wrap: normal;
+        word-break: normal;
+        line-break: auto;
+    }
+
+    .readable-copy {
+        text-wrap: pretty;
+        overflow-wrap: break-word;
+        word-break: normal;
+        line-break: auto;
+    }
+
+    .service-orbit {
+        position: relative;
+        max-width: 980px;
+        min-height: 650px;
+        margin-right: auto;
+        margin-left: auto;
+        isolation: isolate;
+    }
+
+    .service-orbit__ring {
+        position: absolute;
+        inset: 50% auto auto 50%;
+        width: min(78vw, 520px);
+        aspect-ratio: 1;
+        transform: translate(-50%, -50%);
+        border-radius: 9999px;
+        background:
+            radial-gradient(circle at center, #f4f8fa 0 34%, transparent 35%),
+            conic-gradient(
+                from -106deg,
+                #0d7d74 0 46deg,
+                #2579b8 46deg 92deg,
+                #e07b39 92deg 138deg,
+                #1f8f5f 138deg 184deg,
+                #7c3aed 184deg 230deg,
+                #d97706 230deg 276deg,
+                #0f2942 276deg 322deg,
+                #0d7d74 322deg 360deg
+            );
+        box-shadow: 0 28px 70px rgba(15, 42, 64, 0.18);
+        opacity: 0.16;
+    }
+
+    .service-orbit__ring::before,
+    .service-orbit__ring::after {
+        content: '';
+        position: absolute;
+        inset: 14%;
+        border-radius: inherit;
+        border: 1px solid rgba(13, 125, 116, 0.18);
+    }
+
+    .service-orbit__ring::after {
+        inset: 27%;
+        border-color: rgba(15, 42, 64, 0.14);
+    }
+
+    .service-orbit__center {
+        position: absolute;
+        inset: 50% auto auto 50%;
+        z-index: 2;
+        display: grid;
+        width: min(58vw, 250px);
+        min-height: 190px;
+        transform: translate(-50%, -50%);
+        place-items: center;
+        gap: 0.85rem;
+        border: 1px solid rgba(13, 125, 116, 0.18);
+        border-radius: 9999px;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fbfb 100%);
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(15, 42, 64, 0.14);
+    }
+
+    .service-orbit__logo {
+        width: min(100%, 190px);
+        height: auto;
+        object-fit: contain;
+    }
+
+    .service-orbit__center-label {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.375rem;
+        background: rgba(224, 123, 57, 0.12);
+        padding: 0.35rem 0.65rem;
+        color: #0f2942;
+        font-size: 0.82rem;
+        font-weight: 800;
+    }
+
+    .service-orbit__items {
+        position: absolute;
+        inset: 0;
+        list-style: none;
+    }
+
+    .service-orbit__item {
+        position: absolute;
+        inset: 50% auto auto 50%;
+        z-index: 3;
+        display: grid;
+        width: 225px;
+        min-height: 122px;
+        grid-template-columns: auto 1fr;
+        gap: 0.75rem;
+        transform: rotate(var(--angle)) translate(clamp(14rem, 26vw, 17rem)) rotate(calc(var(--angle) * -1)) translate(-50%, -50%);
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        border-top: 4px solid var(--accent-color);
+        border-radius: 0.5rem;
+        background: rgba(255, 255, 255, 0.96);
+        padding: 0.9rem;
+        box-shadow: 0 18px 42px rgba(15, 42, 64, 0.11);
+    }
+
+    .service-orbit__badge {
+        position: absolute;
+        right: 0.75rem;
+        top: 0.65rem;
+        color: rgba(15, 42, 64, 0.24);
+        font-size: 0.8rem;
+        font-weight: 800;
+    }
+
+    .service-orbit__icon {
+        display: grid;
+        width: 2.75rem;
+        height: 2.75rem;
+        place-items: center;
+        border-radius: 0.5rem;
+        background: color-mix(in srgb, var(--accent-color) 12%, white);
+        color: var(--accent-color);
+    }
+
+    .service-orbit__copy {
+        display: grid;
+        gap: 0.35rem;
+        padding-right: 1.25rem;
+    }
+
+    .service-orbit__copy strong {
+        color: #0f2942;
+        font-size: 0.98rem;
+        line-height: 1.45;
+        overflow-wrap: normal;
+        word-break: normal;
+        line-break: auto;
+    }
+
+    .service-orbit__copy span {
+        color: #64748b;
+        font-size: 0.78rem;
+        line-height: 1.65;
+        overflow-wrap: break-word;
+        word-break: normal;
+        line-break: auto;
+    }
+
+    @media (max-width: 767px) {
+        .service-orbit {
+            display: grid;
+            min-height: auto;
+            gap: 1rem;
+        }
+
+        .service-orbit__ring {
+            display: none;
+        }
+
+        .service-orbit__center {
+            position: relative;
+            inset: auto;
+            width: 100%;
+            min-height: auto;
+            transform: none;
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+        }
+
+        .service-orbit__items {
+            position: relative;
+            display: grid;
+            inset: auto;
+            gap: 0.85rem;
+        }
+
+        .service-orbit__item {
+            position: relative;
+            inset: auto;
+            width: 100%;
+            min-height: auto;
+            transform: none;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1130px) {
+        .service-orbit {
+            min-height: 860px;
+        }
+
+        .service-orbit__item {
+            transform: rotate(var(--angle)) translate(18rem) rotate(calc(var(--angle) * -1)) translate(-50%, -50%);
+        }
     }
 }

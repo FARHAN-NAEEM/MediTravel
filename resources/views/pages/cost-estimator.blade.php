@@ -1,4 +1,4 @@
-<x-layouts.app :title="__('site.pages.cost_estimator') . ' - MediTravel'">
+<x-layouts.app :title="__('site.pages.cost_estimator') . ' - Asian Health Connect'">
     <section class="container-page py-10">
         <h1 class="section-title">{{ __('site.pages.cost_estimator') }}</h1>
         <p class="mt-3 max-w-2xl text-slate-600">{{ __('site.pages.cost_estimator_sub') }}</p>

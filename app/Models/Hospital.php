@@ -4,11 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Hospital extends Model
 {
     protected $guarded = [];
+
+    public function cardHighlight(): ?string
+    {
+        $localized = app()->getLocale() === 'bn'
+            ? $this->card_highlight_bn
+            : $this->card_highlight_en;
+        $fallback = app()->getLocale() === 'bn'
+            ? $this->card_highlight_en
+            : $this->card_highlight_bn;
+
+        return filled($localized)
+            ? trim($localized)
+            : (filled($fallback) ? trim($fallback) : null);
+    }
 
     public function getRouteKeyName(): string
     {
@@ -41,5 +56,10 @@ class Hospital extends Model
     public function treatmentCosts(): HasMany
     {
         return $this->hasMany(TreatmentCost::class);
+    }
+
+    public function hotels(): BelongsToMany
+    {
+        return $this->belongsToMany(Hotel::class, 'hotel_hospital');
     }
 }

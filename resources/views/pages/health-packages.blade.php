@@ -1,4 +1,4 @@
-<x-layouts.app :title="__('site.pages.health_packages') . ' - MediTravel'">
+<x-layouts.app :title="__('site.pages.health_packages') . ' - Asian Health Connect'">
     <section class="container-page py-10">
         <h1 class="section-title">{{ __('site.pages.health_packages') }}</h1>
         <div class="mt-8 grid gap-5 md:grid-cols-3">

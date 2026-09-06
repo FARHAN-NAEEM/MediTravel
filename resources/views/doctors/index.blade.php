@@ -1,4 +1,4 @@
-<x-layouts.app :title="__('site.pages.doctor_directory') . ' - MediTravel'">
+<x-layouts.app :title="__('site.pages.doctor_directory') . ' - Asian Health Connect'">
     <section class="container-page py-10">
         <h1 class="section-title">{{ __('site.pages.doctor_directory') }}</h1>
         <form class="mt-6 grid gap-3 rounded-lg bg-white p-4 shadow-sm md:grid-cols-4">

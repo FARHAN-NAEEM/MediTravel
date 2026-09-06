@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
 use App\Models\City;
+use App\Models\Country;
 use App\Models\Department;
 use App\Models\Doctor;
 use App\Models\Faq;
@@ -21,9 +22,34 @@ class PageController extends Controller
 {
     public function home()
     {
+        $destinationCountryNames = [
+            'thailand' => 'Thailand',
+            'china' => 'China',
+            'india' => 'India',
+            'singapore' => 'Singapore',
+            'malaysia' => 'Malaysia',
+        ];
+
+        $destinationCountries = Country::with([
+            'hospitals' => fn ($query) => $query
+                ->with('city')
+                ->orderBy('sort_order')
+                ->orderBy('id'),
+        ])->get();
+
+        $partnerMarkets = collect($destinationCountryNames)->map(
+            fn (string $name, string $key) => [
+                'key' => $key,
+                'country' => $destinationCountries->first(
+                    fn (Country $country) => strcasecmp(trim($country->name), $name) === 0
+                ),
+            ]
+        )->values();
+
         return view('pages.home', [
             'featuredHospitals' => Hospital::with('city', 'country')->where('is_featured', true)->take(6)->get(),
             'featuredDoctors' => Doctor::with('hospital', 'department')->where('is_featured', true)->take(6)->get(),
+            'partnerMarkets' => $partnerMarkets,
             'services' => Service::take(9)->get(),
             'reviews' => Review::with('hospital')->where('is_published', true)->take(6)->get(),
             'heroImages' => HeroImage::where('is_active', true)->orderBy('sort_order')->orderByDesc('updated_at')->get(),
@@ -112,13 +138,17 @@ class PageController extends Controller
 
     public function serviceShow(Service $service)
     {
-        return view('services.show', compact('service'));
+        return view('services.show', [
+            'service' => $service->load('requiredDocuments'),
+        ]);
     }
 
     public function visaSupport()
     {
         return view('pages.visa-support', [
             'visaDocuments' => VisaDocument::where('is_active', true)
+                ->where('is_required', true)
+                ->whereNull('service_id')
                 ->orderBy('sort_order')
                 ->orderBy('title_bn')
                 ->get(),

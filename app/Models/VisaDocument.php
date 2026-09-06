@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class VisaDocument extends Model
 {
@@ -14,6 +15,11 @@ class VisaDocument extends Model
             'is_required' => 'boolean',
             'is_active' => 'boolean',
         ];
+    }
+
+    public function service(): BelongsTo
+    {
+        return $this->belongsTo(Service::class);
     }
 
     public function localizedTitle(): string

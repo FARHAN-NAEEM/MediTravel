@@ -13,4 +13,14 @@ class Country extends Model
     {
         return $this->hasMany(City::class);
     }
+
+    public function hospitals(): HasMany
+    {
+        return $this->hasMany(Hospital::class);
+    }
+
+    public function hotels(): HasMany
+    {
+        return $this->hasMany(Hotel::class);
+    }
 }

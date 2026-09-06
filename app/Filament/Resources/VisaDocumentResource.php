@@ -18,7 +18,11 @@ class VisaDocumentResource extends Resource
 
     protected static ?string $navigationGroup = 'Medical Content';
 
-    protected static ?string $navigationLabel = 'Visa Documents';
+    protected static ?string $navigationLabel = 'Required Documents';
+
+    protected static ?string $modelLabel = 'required document';
+
+    protected static ?string $pluralModelLabel = 'Required Documents';
 
     protected static ?int $navigationSort = 40;
 
@@ -38,10 +42,15 @@ class VisaDocumentResource extends Resource
             Forms\Components\Textarea::make('description_en')
                 ->label('Description English')
                 ->rows(3),
-            Forms\Components\TextInput::make('category')
-                ->required()
-                ->default('medical_visa')
-                ->maxLength(255),
+            Forms\Components\Select::make('service_id')
+                ->label('Checklist target')
+                ->relationship('service', 'name')
+                ->searchable()
+                ->preload()
+                ->placeholder('Medical Visa Support')
+                ->helperText('Leave empty for the Medical Visa Support page, or select a service for its details page.'),
+            Forms\Components\Hidden::make('category')
+                ->default('medical_visa'),
             Forms\Components\TextInput::make('sort_order')
                 ->numeric()
                 ->default(0),
@@ -58,12 +67,18 @@ class VisaDocumentResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title_bn')->label('Bangla')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('title_en')->label('English')->searchable(),
-                Tables\Columns\TextColumn::make('category')->badge(),
+                Tables\Columns\TextColumn::make('target')
+                    ->label('Checklist target')
+                    ->getStateUsing(fn (VisaDocument $record): string => $record->service?->name ?? 'Medical Visa Support')
+                    ->badge(),
                 Tables\Columns\IconColumn::make('is_required')->boolean(),
                 Tables\Columns\IconColumn::make('is_active')->boolean(),
                 Tables\Columns\TextColumn::make('sort_order')->sortable(),
             ])
             ->filters([
+                Tables\Filters\SelectFilter::make('service_id')
+                    ->label('Target service')
+                    ->relationship('service', 'name'),
                 Tables\Filters\TernaryFilter::make('is_active'),
                 Tables\Filters\TernaryFilter::make('is_required'),
             ])

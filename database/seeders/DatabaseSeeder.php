@@ -19,7 +19,9 @@ use App\Models\Treatment;
 use App\Models\TreatmentCost;
 use App\Models\User;
 use App\Models\VisaDocument;
+use App\Support\AdminAccess;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
@@ -29,17 +31,32 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $admin = User::updateOrCreate(
-            ['email' => 'admin@meditravel.test'],
-            ['name' => 'Super Admin', 'password' => Hash::make('password')]
-        );
+        $ownerEmail = config('admin.owner_email');
+        $admin = User::withTrashed()->where('is_owner', true)->first()
+            ?? User::withTrashed()->where('email', $ownerEmail)->first();
+
+        if (! $admin) {
+            $configuredPassword = config('admin.owner_password');
+            $admin = User::query()->create([
+                'name' => config('admin.owner_name'),
+                'email' => $ownerEmail,
+                'password' => Hash::make($configuredPassword ?: Str::password(48)),
+            ]);
+        }
+
+        DB::table('users')->where('id', $admin->id)->update([
+            'is_owner' => true,
+            'is_active' => true,
+            'deleted_at' => null,
+        ]);
+        $admin->refresh();
 
         if (class_exists(Role::class) && Schema::hasTable('roles')) {
-            foreach (['super_admin', 'manager', 'support_agent'] as $role) {
+            foreach ([AdminAccess::OWNER_ROLE, AdminAccess::USER_ADMIN_ROLE] as $role) {
                 Role::findOrCreate($role);
             }
 
-            $admin->assignRole('super_admin');
+            $admin->syncRoles([AdminAccess::OWNER_ROLE]);
         }
 
         $india = Country::updateOrCreate(['slug' => 'india'], ['name' => 'India', 'flag' => 'in', 'sort_order' => 1]);
@@ -139,7 +156,7 @@ class DatabaseSeeder extends Seeder
             Service::updateOrCreate(['slug' => $slug], [
                 'name' => $name,
                 'icon' => 'sparkles',
-                'short_desc' => 'Fast WhatsApp-first support handled by the MediTravel team.',
+                'short_desc' => 'Fast WhatsApp-first support handled by the Asian Health Connect team.',
                 'body' => 'Submit a short form, receive a reference number, and continue the conversation on WhatsApp with all context preserved in the admin CRM.',
             ]);
         }
@@ -193,8 +210,8 @@ class DatabaseSeeder extends Seeder
         }
 
         Page::updateOrCreate(['slug' => 'about'], [
-            'title' => 'About MediTravel',
-            'body' => 'MediTravel helps Bangladeshi patients connect with hospitals and doctors abroad while keeping communication simple through WhatsApp and phone support.',
+            'title' => 'About Asian Health Connect',
+            'body' => 'Asian Health Connect helps Bangladeshi patients connect with hospitals and doctors abroad while keeping communication simple through WhatsApp and phone support.',
         ]);
 
         Page::updateOrCreate(['slug' => 'emi'], [
@@ -205,10 +222,12 @@ class DatabaseSeeder extends Seeder
         foreach ([
             'whatsapp_number' => env('WHATSAPP_NUMBER', '8801700000000'),
             'support_phone' => env('SUPPORT_PHONE', '+8801700000000'),
-            'support_email' => env('SUPPORT_EMAIL', 'care@meditravel.test'),
+            'support_email' => env('SUPPORT_EMAIL', 'care@asianhealthconnect.com'),
             'site_tagline' => 'Bangla-first medical travel support for India and abroad.',
         ] as $key => $value) {
             Setting::updateOrCreate(['key' => $key], ['value' => $value]);
         }
+
+        $this->call(SiteContactSeeder::class);
     }
 }

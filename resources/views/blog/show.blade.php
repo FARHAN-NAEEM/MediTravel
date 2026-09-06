@@ -1,4 +1,4 @@
-<x-layouts.app title="{{ $post->title }} - MediTravel">
+<x-layouts.app title="{{ $post->title }} - Asian Health Connect">
     <article class="container-page max-w-3xl py-10">
         <div class="text-sm font-semibold text-tealTrust">{{ $post->category?->name }}</div>
         <h1 class="mt-3 text-4xl font-bold">{{ $post->title }}</h1>

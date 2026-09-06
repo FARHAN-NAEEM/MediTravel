@@ -75,6 +75,9 @@ jobs:
         run: |
           npm ci
           npm run build
+          rm -rf .deploy/build
+          mkdir -p .deploy/build
+          cp -a public/build/. .deploy/build/
 
       - name: Publish deployment branch
         id: publish
@@ -82,7 +85,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          git add --force public/build
+          git add --force .deploy/build
           git commit --allow-empty -m "Build deployment for ${{ steps.prepare.outputs.source_sha }}"
           git push origin "${DEPLOY_BRANCH}"
 

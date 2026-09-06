@@ -6,6 +6,7 @@ APP_DIR="/home/asianhea/asian-health-connect"
 PUBLIC_DIR="/home/asianhea/public_html"
 PHP_BIN="/usr/local/bin/php"
 COMPOSER_BIN="/usr/local/bin/composer"
+BUILD_DIR="$APP_DIR/.deploy/build"
 
 cd "$APP_DIR"
 
@@ -14,7 +15,11 @@ if [[ ! -f .env ]]; then
     exit 1
 fi
 
-if [[ ! -f public/build/manifest.json ]]; then
+if [[ ! -f "$BUILD_DIR/manifest.json" ]]; then
+    BUILD_DIR="$APP_DIR/public/build"
+fi
+
+if [[ ! -f "$BUILD_DIR/manifest.json" ]]; then
     echo "Deployment stopped: the production Vite manifest is missing." >&2
     exit 1
 fi
@@ -33,12 +38,12 @@ for directory in css images js; do
     fi
 done
 
-source_build="$(readlink -f public/build)"
+source_build="$(readlink -f "$BUILD_DIR")"
 target_build="$(readlink -f "$PUBLIC_DIR/build")"
 
 if [[ "$source_build" != "$target_build" ]]; then
     mkdir -p "$PUBLIC_DIR/build"
-    cp -a public/build/. "$PUBLIC_DIR/build/"
+    cp -a "$BUILD_DIR/." "$PUBLIC_DIR/build/"
 fi
 
 chmod -R ug+rwX storage bootstrap/cache

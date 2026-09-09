@@ -66,8 +66,8 @@
 
     .service-orbit {
         position: relative;
-        max-width: 980px;
-        min-height: 650px;
+        max-width: 920px;
+        min-height: 700px;
         margin-right: auto;
         margin-left: auto;
         isolation: isolate;
@@ -76,22 +76,18 @@
     .service-orbit__ring {
         position: absolute;
         inset: 50% auto auto 50%;
-        width: min(78vw, 520px);
+        width: min(72vw, 500px);
         aspect-ratio: 1;
         transform: translate(-50%, -50%);
         border-radius: 9999px;
         background:
             radial-gradient(circle at center, #f4f8fa 0 34%, transparent 35%),
             conic-gradient(
-                from -106deg,
-                #0d7d74 0 46deg,
-                #2579b8 46deg 92deg,
-                #e07b39 92deg 138deg,
-                #1f8f5f 138deg 184deg,
-                #7c3aed 184deg 230deg,
-                #d97706 230deg 276deg,
-                #0f2942 276deg 322deg,
-                #0d7d74 322deg 360deg
+                from -45deg,
+                #0d7d74 0 90deg,
+                #2579b8 90deg 180deg,
+                #d97706 180deg 270deg,
+                #0f2942 270deg 360deg
             );
         box-shadow: 0 28px 70px rgba(15, 42, 64, 0.18);
         opacity: 0.16;
@@ -158,11 +154,11 @@
         inset: 50% auto auto 50%;
         z-index: 3;
         display: grid;
-        width: 225px;
-        min-height: 122px;
+        width: 240px;
+        min-height: 132px;
         grid-template-columns: auto 1fr;
         gap: 0.75rem;
-        transform: rotate(var(--angle)) translate(clamp(14rem, 26vw, 17rem)) rotate(calc(var(--angle) * -1)) translate(-50%, -50%);
+        transform: rotate(var(--angle)) translate(clamp(15.5rem, 26vw, 17.5rem)) rotate(calc(var(--angle) * -1)) translate(-50%, -50%);
         border: 1px solid rgba(148, 163, 184, 0.35);
         border-top: 4px solid var(--accent-color);
         border-radius: 0.5rem;
@@ -214,11 +210,12 @@
         line-break: auto;
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
         .service-orbit {
             display: grid;
+            max-width: 760px;
             min-height: auto;
-            gap: 1rem;
+            gap: 1.25rem;
         }
 
         .service-orbit__ring {
@@ -229,9 +226,11 @@
             position: relative;
             inset: auto;
             width: 100%;
+            max-width: 420px;
             min-height: auto;
+            margin-inline: auto;
             transform: none;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             padding: 1.25rem;
         }
 
@@ -246,18 +245,14 @@
             position: relative;
             inset: auto;
             width: 100%;
-            min-height: auto;
+            min-height: 132px;
             transform: none;
         }
     }
 
-    @media (min-width: 768px) and (max-width: 1130px) {
-        .service-orbit {
-            min-height: 860px;
-        }
-
-        .service-orbit__item {
-            transform: rotate(var(--angle)) translate(18rem) rotate(calc(var(--angle) * -1)) translate(-50%, -50%);
+    @media (min-width: 640px) and (max-width: 1023px) {
+        .service-orbit__items {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
     }
 }

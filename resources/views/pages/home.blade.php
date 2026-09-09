@@ -56,15 +56,12 @@
                 $journeyIcons = [
                     'heroicon-o-magnifying-glass-circle',
                     'heroicon-o-calendar-days',
-                    'heroicon-o-identification',
-                    'heroicon-o-paper-airplane',
-                    'heroicon-o-building-storefront',
                     'heroicon-o-map-pin',
                     'heroicon-o-language',
                 ];
 
-                $journeyAngles = ['-90deg', '-38deg', '14deg', '66deg', '118deg', '170deg', '222deg'];
-                $journeyColors = ['#0D7D74', '#2579B8', '#E07B39', '#1F8F5F', '#7C3AED', '#D97706', '#0F2942'];
+                $journeyAngles = ['-90deg', '0deg', '90deg', '180deg'];
+                $journeyColors = ['#0D7D74', '#2579B8', '#D97706', '#0F2942'];
             @endphp
 
             <div>
@@ -80,7 +77,7 @@
                             <span>{{ __('site.home.journey_cta') }}</span>
                             <x-heroicon-o-arrow-right class="h-5 w-5" />
                         </a>
-                        <a href="{{ route('visa-support') }}" class="btn-secondary px-6 py-3.5">{{ __('site.home.journey_secondary_cta') }}</a>
+                        <a href="{{ route('contact') }}" class="btn-secondary px-6 py-3.5">{{ __('site.home.journey_secondary_cta') }}</a>
                     </div>
                 </div>
 

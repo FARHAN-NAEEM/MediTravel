@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Str;
 use Livewire\Livewire;
 use Spatie\Permission\Models\Permission;
@@ -311,6 +312,20 @@ class AdminManagementSecurityTest extends TestCase
             1,
             AdminActivityLog::query()->where('action', 'password_reset_requested')->count(),
         );
+    }
+
+    public function test_password_reset_notification_is_sent_without_waiting_for_the_queue(): void
+    {
+        Notification::fake();
+        Queue::fake();
+
+        $owner = $this->owner();
+        $admin = $this->userAdmin($owner, 'immediate-reset@example.com');
+
+        $admin->sendPasswordResetNotification('reset-token');
+
+        Notification::assertSentTo($admin, ResetPasswordNotification::class);
+        Queue::assertNothingPushed();
     }
 
     public function test_expired_password_reset_token_is_rejected(): void

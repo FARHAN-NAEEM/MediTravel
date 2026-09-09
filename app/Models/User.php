@@ -112,7 +112,7 @@ class User extends Authenticatable implements FilamentUser
         $notification = app(ResetPasswordNotification::class, ['token' => $token]);
         $notification->url = $panel->getResetPasswordUrl($token, $this);
 
-        $this->notify($notification);
+        $this->notifyNow($notification);
     }
 
     private function assertRoleChangeAllowed(array $roles): void

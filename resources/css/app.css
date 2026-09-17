@@ -51,7 +51,7 @@
 
     .hero-slider__image {
         aspect-ratio: 8 / 5;
-        background: #f0f5f5;
+        background: #fff;
         overflow: hidden;
         border-bottom: 3px solid #0d7d74;
     }

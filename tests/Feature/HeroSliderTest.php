@@ -9,6 +9,7 @@ use App\Models\HeroImage;
 use App\Models\Setting;
 use App\Models\User;
 use App\Support\AdminAccess;
+use Database\Seeders\BrandedHeroSlidesSeeder;
 use Database\Seeders\HeroSliderSeeder;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -66,6 +67,47 @@ class HeroSliderTest extends TestCase
         }
 
         $this->get('/')->assertOk()->assertSee('heroSlider(7, 5000)', false)->assertSee('Destination 7');
+    }
+
+    public function test_campaign_installation_preserves_uploads_and_does_not_repeat_or_restore_deleted_slides(): void
+    {
+        Storage::fake('public');
+        $uploaded = HeroImage::create(['title' => 'My uploaded banner', 'image_path' => 'hero-images/custom.png', 'heading_bn' => 'আমার লেখা', 'sort_order' => 0]);
+        $this->seed(BrandedHeroSlidesSeeder::class);
+        $this->assertDatabaseCount('hero_images', 5);
+        $this->assertTrue($uploaded->fresh()->is_active);
+        $this->assertSame('আমার লেখা', $uploaded->fresh()->heading_bn);
+        $this->assertSame(4, $uploaded->fresh()->sort_order);
+
+        $campaign = HeroImage::where('image_path', 'like', 'hero-images/brand-2026-09/%')->orderBy('sort_order')->get();
+        foreach ($campaign as $slide) {
+            $this->assertTrue($slide->is_active);
+            $this->assertSame('contain', $slide->image_fit);
+            Storage::disk('public')->assertExists($slide->image_path);
+            [$width, $height] = getimagesize(Storage::disk('public')->path($slide->image_path));
+            $this->assertEqualsWithDelta(1.6, $width / $height, 0.01);
+        }
+
+        $campaign[0]->update(['heading_en' => 'Admin revised copy', 'is_active' => false]);
+        $campaign[1]->delete();
+        $this->seed(BrandedHeroSlidesSeeder::class);
+        $this->assertDatabaseCount('hero_images', 4);
+        $this->assertSame('Admin revised copy', $campaign[0]->fresh()->heading_en);
+        $this->assertFalse($campaign[0]->fresh()->is_active);
+        $this->assertSame(4, $uploaded->fresh()->sort_order);
+    }
+
+    public function test_legacy_banners_and_new_uploads_use_uncropped_display(): void
+    {
+        $legacy = HeroImage::create(['image_path' => 'wide-banner.png', 'image_fit' => 'cover']);
+        $migration = require database_path('migrations/2026_09_18_010000_show_full_hero_images_by_default.php');
+        $migration->up();
+        $this->assertSame('contain', $legacy->fresh()->image_fit);
+        $this->assertSame('contain', (new HeroImage)->image_fit);
+        $this->get('/')->assertOk()->assertSee('object-contain', false);
+
+        $this->signInAdmin();
+        Livewire::test(CreateHeroImage::class)->assertFormSet(['image_fit' => 'contain']);
     }
 
     public function test_language_fallback_and_invalid_saved_interval_are_safe(): void

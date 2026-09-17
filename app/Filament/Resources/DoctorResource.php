@@ -26,6 +26,10 @@ class DoctorResource extends Resource
             Forms\Components\TextInput::make('designation')->maxLength(255),
             Forms\Components\TextInput::make('qualifications')->maxLength(255),
             Forms\Components\TextInput::make('experience_years')->numeric()->default(0),
+            Forms\Components\TextInput::make('source_url')
+                ->label('Official profile URL')
+                ->url()
+                ->maxLength(2048),
             Forms\Components\Textarea::make('bio')->columnSpanFull(),
             Forms\Components\Toggle::make('is_featured'),
         ]);

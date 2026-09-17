@@ -14,9 +14,11 @@
         <div class="mt-8 grid gap-5 md:grid-cols-3">
             @foreach ($doctors as $doctor)
                 <a href="{{ route('doctors.show', $doctor) }}" class="card p-5 transition hover:shadow-md">
-                    <div class="mb-4 grid h-28 w-28 place-items-center rounded-lg bg-tealTrust/10 text-3xl font-bold text-tealTrust">{{ Str::of($doctor->name)->after('Dr. ')->substr(0, 1) }}</div>
+                    <div class="mb-4 grid h-28 w-28 place-items-center rounded-lg bg-tealTrust/10 text-3xl font-bold text-tealTrust">{{ Str::of($doctor->name)->replaceStart('Dr. ', '')->replaceStart('Dr ', '')->substr(0, 1)->upper() }}</div>
                     <div class="text-lg font-bold">{{ $doctor->name }}</div>
-                    <div class="text-sm text-slate-600">{{ $doctor->designation }}</div>
+                    @if ($doctor->designation)
+                        <div class="text-sm text-slate-600">{{ $doctor->designation }}</div>
+                    @endif
                     <div class="mt-3 text-sm text-slate-500">{{ $doctor->hospital->name }} · {{ $doctor->department->name }}</div>
                 </a>
             @endforeach

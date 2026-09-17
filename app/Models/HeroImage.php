@@ -20,4 +20,19 @@ class HeroImage extends Model
     {
         return Storage::disk('public')->url($this->image_path);
     }
+
+    public function localizedContent(string $field): ?string
+    {
+        $locale = app()->getLocale() === 'en' ? 'en' : 'bn';
+        $fallback = $locale === 'en' ? 'bn' : 'en';
+
+        return $this->getAttribute($field.'_'.$locale) ?: $this->getAttribute($field.'_'.$fallback);
+    }
+
+    public static function slideInterval(): int
+    {
+        $seconds = (int) Setting::where('key', 'hero_slide_interval')->value('value');
+
+        return in_array($seconds, [3, 5], true) ? $seconds : 5;
+    }
 }

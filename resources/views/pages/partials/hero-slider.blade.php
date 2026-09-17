@@ -26,7 +26,7 @@
                     <img
                         src="{{ $slide->imageUrl() }}"
                         alt="{{ $slide->alt_text ?: $slide->localizedContent('heading') ?: $slide->title ?: __('slider.label') }}"
-                        class="{{ $slide->image_fit === 'contain' ? 'object-contain' : 'object-cover' }}"
+                        class="{{ $slide->image_fit === 'cover' ? 'object-cover' : 'object-contain' }}"
                         width="960"
                         height="600"
                         loading="{{ $index === 0 ? 'eager' : 'lazy' }}"

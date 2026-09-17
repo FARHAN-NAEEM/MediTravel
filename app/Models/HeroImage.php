@@ -9,6 +9,8 @@ class HeroImage extends Model
 {
     protected $guarded = [];
 
+    protected $attributes = ['image_fit' => 'contain'];
+
     protected function casts(): array
     {
         return [

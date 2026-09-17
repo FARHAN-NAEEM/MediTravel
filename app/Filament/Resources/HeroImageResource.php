@@ -39,11 +39,12 @@ class HeroImageResource extends Resource
                 ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                 ->imageEditor()
                 ->required()
-                ->helperText('Upload JPG, PNG, or WebP. Maximum size: 10MB per image.'),
+                ->helperText('Upload JPG, PNG, or WebP. Maximum size: 10MB. Recommended banner ratio: 8:5 (for example 1600 x 1000).'),
             Forms\Components\Select::make('image_fit')
                 ->label('Image display')
-                ->options(['cover' => 'Fill frame', 'contain' => 'Show full image'])
-                ->default('cover')
+                ->options(['contain' => 'Show full image (no cropping)', 'cover' => 'Fill frame (crops edges)'])
+                ->default('contain')
+                ->helperText('Use Show full image for banners with text or logos. Fill frame may cut off their edges.')
                 ->required()
                 ->in(['cover', 'contain']),
             Forms\Components\Section::make('Slide text')

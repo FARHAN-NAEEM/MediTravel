@@ -47,12 +47,24 @@ class PageController extends Controller
         )->values();
 
         return view('pages.home', [
-            'featuredHospitals' => Hospital::with('city', 'country')->where('is_featured', true)->take(6)->get(),
+            'featuredHospitals' => Hospital::with('city', 'country')
+                ->where(fn ($query) => $query
+                    ->where('is_featured', true)
+                    ->orWhereIn('slug', [
+                        'apollo-hospitals-delhi-delhi',
+                        'apollo-health-city-jubilee-hills-hyderabad-hyderabad',
+                    ]))
+                ->orderByDesc('is_featured')
+                ->orderBy('sort_order')
+                ->orderBy('id')
+                ->take(4)
+                ->get(),
             'featuredDoctors' => Doctor::with('hospital', 'department')->where('is_featured', true)->take(6)->get(),
             'partnerMarkets' => $partnerMarkets,
             'services' => Service::take(9)->get(),
             'reviews' => Review::with('hospital')->where('is_published', true)->take(6)->get(),
             'heroImages' => HeroImage::where('is_active', true)->orderBy('sort_order')->orderByDesc('updated_at')->get(),
+            'heroSlideInterval' => HeroImage::slideInterval(),
             'stats' => [
                 'hospitals' => Hospital::count(),
                 'doctors' => Doctor::count(),

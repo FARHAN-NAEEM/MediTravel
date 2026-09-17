@@ -1,7 +1,10 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
+import heroSlider from './hero-slider';
 
 window.Alpine = Alpine;
+
+Alpine.data('heroSlider', heroSlider);
 
 Alpine.data('documentChecklist', (storageKey, documentIds) => ({
     storageKey: `ahc:document-checklist:v1:${storageKey}`,

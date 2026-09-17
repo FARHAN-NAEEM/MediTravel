@@ -6,6 +6,7 @@ use App\Models\City;
 use App\Models\Country;
 use App\Models\Hospital;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Symfony\Component\DomCrawler\Crawler;
 use Tests\TestCase;
 
 class HospitalCardTest extends TestCase
@@ -49,6 +50,43 @@ class HospitalCardTest extends TestCase
 
         $response->assertSee($fallbackHospital->card_highlight_en);
         $this->assertNull(Hospital::where('slug', 'no-highlight-hospital')->firstOrFail()->cardHighlight());
+    }
+
+    public function test_homepage_shows_four_curated_hospitals_with_the_shared_illustration(): void
+    {
+        $this->hospital();
+        $this->hospital([
+            'name' => 'Fortis Hospital Kolkata',
+            'slug' => 'fortis-hospital-kolkata',
+            'sort_order' => 2,
+        ]);
+        $this->hospital([
+            'name' => 'Apollo Hospitals, Delhi',
+            'slug' => 'apollo-hospitals-delhi-delhi',
+            'is_featured' => false,
+        ]);
+        $this->hospital([
+            'name' => 'Apollo Health City, Jubilee Hills, Hyderabad',
+            'slug' => 'apollo-health-city-jubilee-hills-hyderabad-hyderabad',
+            'is_featured' => false,
+        ]);
+        $this->hospital([
+            'name' => 'Unrelated Hospital',
+            'slug' => 'unrelated-hospital',
+            'is_featured' => false,
+        ]);
+
+        $response = $this->get('/')->assertOk();
+        $cards = (new Crawler($response->getContent()))
+            ->filterXPath('//a[.//img[contains(@src, "hospital-card-illustration.svg")]]');
+        $cardText = implode(' ', $cards->each(fn (Crawler $card) => $card->text()));
+
+        foreach (['Apollo Hospitals Chennai', 'Fortis Hospital Kolkata', 'Apollo Hospitals, Delhi', 'Apollo Health City, Jubilee Hills, Hyderabad'] as $name) {
+            $this->assertStringContainsString($name, $cardText);
+        }
+
+        $this->assertStringNotContainsString('Unrelated Hospital', $cardText);
+        $this->assertCount(4, $cards);
     }
 
     private function hospital(array $overrides = []): Hospital

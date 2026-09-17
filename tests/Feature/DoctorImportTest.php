@@ -70,6 +70,11 @@ class DoctorImportTest extends TestCase
             ->assertSee('Dr. Maya Shah')
             ->assertDontSee('Dr. Arjun Sen');
         $this->get(route('doctors.show', $maya))->assertOk()->assertDontSee('0 years experience');
+        $this->get(route('sitemap'))
+            ->assertOk()
+            ->assertHeader('Content-Type', 'application/xml; charset=UTF-8')
+            ->assertSee(route('doctors.show', $maya), false);
+        $this->get(route('robots'))->assertOk()->assertSee('Sitemap: '.route('sitemap'));
     }
 
     public function test_invalid_source_rejects_the_entire_file_before_any_write(): void

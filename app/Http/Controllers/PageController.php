@@ -68,7 +68,7 @@ class PageController extends Controller
             'stats' => [
                 'hospitals' => Hospital::count(),
                 'doctors' => Doctor::count(),
-                'patients' => 2500,
+                'destinations' => Country::whereHas('hospitals')->count(),
             ],
         ]);
     }

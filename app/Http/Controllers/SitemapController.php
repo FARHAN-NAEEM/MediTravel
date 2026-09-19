@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\Treatment;
 use Illuminate\Http\Response;
 use XMLWriter;
 
@@ -35,6 +36,21 @@ class SitemapController extends Controller
                     $xml->endElement();
                 }
             });
+
+        $xml->startElement('url');
+        $xml->writeElement('loc', route('treatments.index'));
+        $xml->endElement();
+
+        Treatment::query()->orderBy('id')->chunkById(500, function ($treatments) use ($xml): void {
+            foreach ($treatments as $treatment) {
+                $xml->startElement('url');
+                $xml->writeElement('loc', route('treatments.show', $treatment));
+                if ($treatment->updated_at) {
+                    $xml->writeElement('lastmod', $treatment->updated_at->toDateString());
+                }
+                $xml->endElement();
+            }
+        });
 
         $xml->endElement();
         $xml->endDocument();

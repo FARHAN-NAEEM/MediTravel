@@ -1,0 +1,629 @@
+{
+  "version": "2026-09",
+  "departments": [
+    {
+      "slug": "cardiac",
+      "name": "Cardiac Care",
+      "name_bn": "হৃদরোগ",
+      "icon": "heart-pulse",
+      "aliases": [
+        "cardiac-care"
+      ]
+    },
+    {
+      "slug": "orthopedic",
+      "name": "Orthopedic",
+      "name_bn": "হাড় ও জয়েন্ট",
+      "icon": "bone",
+      "aliases": []
+    },
+    {
+      "slug": "cancer",
+      "name": "Cancer Care",
+      "name_bn": "ক্যান্সার চিকিৎসা",
+      "icon": "ribbon",
+      "aliases": [
+        "cancer-care"
+      ]
+    },
+    {
+      "slug": "neurology",
+      "name": "Neurology",
+      "name_bn": "মস্তিষ্ক ও স্নায়ু",
+      "icon": "brain",
+      "aliases": []
+    },
+    {
+      "slug": "gastroenterology",
+      "name": "Gastroenterology",
+      "name_bn": "লিভার ও পরিপাকতন্ত্র",
+      "icon": "stomach",
+      "aliases": []
+    },
+    {
+      "slug": "urology",
+      "name": "Urology",
+      "name_bn": "ইউরোলজি",
+      "icon": "activity",
+      "aliases": []
+    },
+    {
+      "slug": "obstetrics-gynecology",
+      "name": "Obstetrics & Gynecology",
+      "name_bn": "নারী ও প্রজনন স্বাস্থ্য",
+      "icon": "heart",
+      "aliases": [
+        "obstetrics-and-gynecology"
+      ]
+    },
+    {
+      "slug": "dermatology",
+      "name": "Dermatology",
+      "name_bn": "ত্বক ও অ্যালার্জি",
+      "icon": "hand",
+      "aliases": []
+    },
+    {
+      "slug": "pulmonology",
+      "name": "Pulmonology",
+      "name_bn": "বক্ষ ও শ্বাসতন্ত্র",
+      "icon": "wind",
+      "aliases": []
+    },
+    {
+      "slug": "endocrinology",
+      "name": "Endocrinology",
+      "name_bn": "ডায়াবেটিস ও হরমোন",
+      "icon": "activity",
+      "aliases": []
+    },
+    {
+      "slug": "ophthalmology",
+      "name": "Ophthalmology",
+      "name_bn": "চোখ",
+      "icon": "eye",
+      "aliases": []
+    },
+    {
+      "slug": "ent",
+      "name": "ENT",
+      "name_bn": "নাক, কান ও গলা",
+      "icon": "ear",
+      "aliases": []
+    },
+    {
+      "slug": "hematology",
+      "name": "Hematology",
+      "name_bn": "রক্তরোগ",
+      "icon": "droplet",
+      "aliases": []
+    },
+    {
+      "slug": "rehabilitation",
+      "name": "Physical Medicine & Rehabilitation",
+      "name_bn": "ব্যথা ও পুনর্বাসন",
+      "icon": "accessibility",
+      "aliases": []
+    },
+    {
+      "slug": "internal-medicine",
+      "name": "Internal Medicine",
+      "name_bn": "মেডিসিন",
+      "icon": "stethoscope",
+      "aliases": []
+    },
+    {
+      "slug": "general-surgery",
+      "name": "General Surgery",
+      "name_bn": "জেনারেল সার্জারি",
+      "icon": "cross",
+      "aliases": []
+    }
+  ],
+  "treatments": [
+    {
+      "slug": "hip-replacement",
+      "name": "Hip Replacement Surgery",
+      "name_bn": "হিপ প্রতিস্থাপন অস্ত্রোপচার",
+      "department": "orthopedic",
+      "illustration": "hip",
+      "description": "Coordinate an orthopaedic consultation to discuss hip replacement, hospital options and the plan for your visit.",
+      "description_bn": "হিপ প্রতিস্থাপন সম্পর্কে অর্থোপেডিক বিশেষজ্ঞের পরামর্শ, হাসপাতাল নির্বাচন ও যাত্রার পরিকল্পনায় সহায়তা।"
+    },
+    {
+      "slug": "heart-care",
+      "name": "Heart Disease Care",
+      "name_bn": "হৃদরোগের চিকিৎসা",
+      "department": "cardiac",
+      "illustration": "heart",
+      "description": "Find a cardiac specialist and arrange a review of your heart-related medical reports before planning a hospital visit.",
+      "description_bn": "হৃদরোগের রিপোর্ট পর্যালোচনা ও চিকিৎসার পরিকল্পনা জানতে কার্ডিয়াক বিশেষজ্ঞের সঙ্গে যোগাযোগে সহায়তা।"
+    },
+    {
+      "slug": "bone-cancer",
+      "name": "Bone Cancer Care",
+      "name_bn": "হাড়ের ক্যান্সার",
+      "department": "cancer",
+      "illustration": "cancer",
+      "description": "Arrange a specialist review for bone cancer and discuss the hospital team's proposed care pathway.",
+      "description_bn": "হাড়ের ক্যান্সার বিষয়ে বিশেষজ্ঞের মতামত ও হাসপাতালের চিকিৎসা পরিকল্পনা জানতে অ্যাপয়েন্টমেন্টের সমন্বয়।"
+    },
+    {
+      "slug": "knee-replacement",
+      "name": "Knee Replacement",
+      "name_bn": "হাঁটু প্রতিস্থাপন",
+      "department": "orthopedic",
+      "illustration": "joints",
+      "description": "Discuss knee replacement with an orthopaedic team and request an individual hospital estimate and appointment.",
+      "description_bn": "হাঁটু প্রতিস্থাপন নিয়ে অর্থোপেডিক টিমের পরামর্শ, অ্যাপয়েন্টমেন্ট ও ব্যক্তিগত খরচের ধারণা পেতে সহায়তা।"
+    },
+    {
+      "slug": "breast-health",
+      "name": "Breast Health",
+      "name_bn": "স্তন স্বাস্থ্য",
+      "department": "obstetrics-gynecology",
+      "illustration": "breast",
+      "description": "Connect with a specialist for breast-health concerns and coordinate a review of any existing reports.",
+      "description_bn": "স্তনের স্বাস্থ্যসংক্রান্ত উদ্বেগ ও বিদ্যমান রিপোর্ট নিয়ে উপযুক্ত বিশেষজ্ঞের পরামর্শ পেতে সহায়তা।"
+    },
+    {
+      "slug": "breast-tumour",
+      "name": "Breast Tumour Evaluation",
+      "name_bn": "স্তন টিউমার মূল্যায়ন",
+      "department": "cancer",
+      "illustration": "breast",
+      "description": "Arrange a specialist appointment to review a breast lump or tumour and discuss the next steps recommended by the clinical team.",
+      "description_bn": "স্তনের গাঁট বা টিউমার নিয়ে বিশেষজ্ঞের মূল্যায়ন ও পরবর্তী করণীয় জানতে অ্যাপয়েন্টমেন্টের সমন্বয়।"
+    },
+    {
+      "slug": "breast-cancer",
+      "name": "Breast Cancer Care",
+      "name_bn": "স্তন ক্যান্সার",
+      "department": "cancer",
+      "illustration": "breast",
+      "description": "Coordinate an oncology consultation for breast cancer, report review and hospital treatment planning.",
+      "description_bn": "স্তন ক্যান্সারের রিপোর্ট পর্যালোচনা ও চিকিৎসার পরিকল্পনার জন্য অনকোলজি বিশেষজ্ঞের অ্যাপয়েন্টমেন্টে সহায়তা।"
+    },
+    {
+      "slug": "supervised-exercise-rehabilitation",
+      "name": "Supervised Exercise & Rehabilitation",
+      "name_bn": "তত্ত্বাবধানে ব্যায়াম ও পুনর্বাসন",
+      "department": "rehabilitation",
+      "illustration": "rehabilitation",
+      "description": "Seek an individual exercise and rehabilitation assessment for needs such as stroke recovery, epilepsy, weight or metabolic health.",
+      "description_bn": "স্ট্রোকের পর পুনর্বাসন, মৃগীরোগ, ওজন বা ট্রাইগ্লিসারাইড-সংক্রান্ত প্রয়োজনে বিশেষজ্ঞের তত্ত্বাবধানে ব্যায়ামের মূল্যায়ন পেতে সহায়তা।"
+    },
+    {
+      "slug": "psoriasis",
+      "name": "Psoriasis Care",
+      "name_bn": "সোরিয়াসিস",
+      "department": "dermatology",
+      "illustration": "skin",
+      "description": "Find a dermatologist to review psoriasis concerns, previous treatment records and follow-up needs.",
+      "description_bn": "সোরিয়াসিস, আগের চিকিৎসার তথ্য ও ফলোআপের প্রয়োজন নিয়ে চর্মরোগ বিশেষজ্ঞের পরামর্শে সহায়তা।"
+    },
+    {
+      "slug": "shoulder-ankle-arthroscopy",
+      "name": "Shoulder & Ankle Arthroscopy",
+      "name_bn": "শোল্ডার ও অ্যাঙ্কেল আর্থ্রোস্কোপি",
+      "department": "orthopedic",
+      "illustration": "joints",
+      "description": "Coordinate an orthopaedic assessment to discuss shoulder or ankle arthroscopy and hospital arrangements.",
+      "description_bn": "কাঁধ বা গোড়ালির আর্থ্রোস্কোপি সম্পর্কে অর্থোপেডিক মূল্যায়ন ও হাসপাতালের সঙ্গে যোগাযোগে সহায়তা।"
+    },
+    {
+      "slug": "liver-disease",
+      "name": "Liver Disease Care",
+      "name_bn": "লিভারের রোগ",
+      "department": "gastroenterology",
+      "illustration": "liver",
+      "description": "Connect with a liver-care specialist for report review and guidance on a planned hospital consultation.",
+      "description_bn": "লিভারের রোগের রিপোর্ট পর্যালোচনা ও হাসপাতালের পরামর্শের জন্য উপযুক্ত বিশেষজ্ঞের সঙ্গে যোগাযোগে সহায়তা।"
+    },
+    {
+      "slug": "liver-transplant",
+      "name": "Liver Transplant Evaluation",
+      "name_bn": "লিভার প্রতিস্থাপন মূল্যায়ন",
+      "department": "gastroenterology",
+      "illustration": "liver",
+      "description": "Coordinate an assessment with a hospital transplant team. The hospital determines eligibility and required documentation.",
+      "description_bn": "হাসপাতালের ট্রান্সপ্লান্ট টিমের মূল্যায়নে যোগাযোগের সমন্বয়। উপযুক্ততা ও প্রয়োজনীয় নথি হাসপাতাল নির্ধারণ করে।"
+    },
+    {
+      "slug": "liver-cancer",
+      "name": "Liver Cancer Care",
+      "name_bn": "লিভার ক্যান্সার",
+      "department": "cancer",
+      "illustration": "liver",
+      "description": "Arrange an oncology and liver-care review to discuss an individual plan with the hospital team.",
+      "description_bn": "লিভার ক্যান্সারের রিপোর্ট ও ব্যক্তিগত চিকিৎসার পরিকল্পনা নিয়ে হাসপাতালের বিশেষজ্ঞ টিমের পরামর্শে সহায়তা।"
+    },
+    {
+      "slug": "blood-cancer",
+      "name": "Blood Cancer Care",
+      "name_bn": "রক্তের ক্যান্সার",
+      "department": "hematology",
+      "illustration": "blood",
+      "description": "Request a haematology or haemato-oncology consultation for blood cancer and coordinate medical-record review.",
+      "description_bn": "রক্তের ক্যান্সারের রিপোর্ট পর্যালোচনার জন্য হেমাটোলজি বা হেমাটো-অনকোলজি বিশেষজ্ঞের অ্যাপয়েন্টমেন্টে সহায়তা।"
+    },
+    {
+      "slug": "blood-pressure",
+      "name": "Blood Pressure Management",
+      "name_bn": "রক্তচাপ নিয়ন্ত্রণ",
+      "department": "cardiac",
+      "illustration": "heart",
+      "description": "Arrange a consultation to review blood-pressure concerns, current prescriptions and follow-up planning.",
+      "description_bn": "রক্তচাপ, চলমান প্রেসক্রিপশন ও ফলোআপের পরিকল্পনা নিয়ে বিশেষজ্ঞের পরামর্শ পেতে সহায়তা।"
+    },
+    {
+      "slug": "meniscus-rotator-cuff",
+      "name": "Meniscus & Rotator Cuff Repair",
+      "name_bn": "মেনিস্কাস ও রোটেটর কাফ রিপেয়ার",
+      "department": "orthopedic",
+      "illustration": "joints",
+      "description": "Connect with an orthopaedic specialist to discuss meniscus or rotator cuff assessment and possible repair planning.",
+      "description_bn": "মেনিস্কাস বা রোটেটর কাফের মূল্যায়ন ও রিপেয়ারের পরিকল্পনা সম্পর্কে অর্থোপেডিক বিশেষজ্ঞের সঙ্গে যোগাযোগে সহায়তা।"
+    },
+    {
+      "slug": "headache-migraine",
+      "name": "Headache & Migraine Care",
+      "name_bn": "মাথাব্যথা ও মাইগ্রেন",
+      "department": "neurology",
+      "illustration": "brain",
+      "description": "Find a neurology specialist for a planned headache or migraine consultation and review of previous records.",
+      "description_bn": "মাথাব্যথা বা মাইগ্রেন নিয়ে পরিকল্পিত পরামর্শ ও আগের রিপোর্ট পর্যালোচনায় নিউরোলজি বিশেষজ্ঞ খুঁজতে সহায়তা।"
+    },
+    {
+      "slug": "stroke-care",
+      "name": "Stroke Follow-up & Rehabilitation",
+      "name_bn": "স্ট্রোকের পর চিকিৎসা ও পুনর্বাসন",
+      "department": "neurology",
+      "illustration": "brain",
+      "description": "Coordinate a planned specialist review and rehabilitation discussion after stroke, using the patient's existing records.",
+      "description_bn": "স্ট্রোকের পর বিদ্যমান রিপোর্ট অনুযায়ী পরিকল্পিত বিশেষজ্ঞ পরামর্শ ও পুনর্বাসন বিষয়ে যোগাযোগে সহায়তা।"
+    },
+    {
+      "slug": "brain-tumour",
+      "name": "Brain Tumour Care",
+      "name_bn": "ব্রেইন টিউমার",
+      "department": "neurology",
+      "illustration": "brain",
+      "description": "Arrange a brain-tumour review with the appropriate hospital team and discuss appointments and report requirements.",
+      "description_bn": "ব্রেইন টিউমারের রিপোর্ট পর্যালোচনা, প্রয়োজনীয় নথি ও অ্যাপয়েন্টমেন্টের জন্য হাসপাতালের টিমের সঙ্গে যোগাযোগে সহায়তা।"
+    },
+    {
+      "slug": "asthma",
+      "name": "Asthma Care",
+      "name_bn": "হাঁপানি বা অ্যাজমা",
+      "department": "pulmonology",
+      "illustration": "lungs",
+      "description": "Connect with a respiratory specialist for a planned asthma review and follow-up arrangements.",
+      "description_bn": "হাঁপানির পরিকল্পিত মূল্যায়ন ও ফলোআপের জন্য শ্বাসতন্ত্রের বিশেষজ্ঞের অ্যাপয়েন্টমেন্টে সহায়তা।"
+    },
+    {
+      "slug": "scabies",
+      "name": "Scabies Care",
+      "name_bn": "স্ক্যাবিস বা খোসপাঁচড়া",
+      "department": "dermatology",
+      "illustration": "skin",
+      "description": "Arrange a dermatology consultation for scabies concerns and a review of previous care.",
+      "description_bn": "স্ক্যাবিস বা খোসপাঁচড়া-সংক্রান্ত উদ্বেগ ও আগের চিকিৎসা নিয়ে চর্মরোগ বিশেষজ্ঞের পরামর্শে সহায়তা।"
+    },
+    {
+      "slug": "ringworm",
+      "name": "Ringworm Care",
+      "name_bn": "দাদ রোগের চিকিৎসা",
+      "department": "dermatology",
+      "illustration": "skin",
+      "description": "Find a dermatologist to assess ringworm concerns and discuss follow-up with the clinical team.",
+      "description_bn": "দাদ রোগের মূল্যায়ন ও ফলোআপের জন্য চর্মরোগ বিশেষজ্ঞের সঙ্গে যোগাযোগে সহায়তা।"
+    },
+    {
+      "slug": "fracture-fixation",
+      "name": "Fracture Fixation Surgery",
+      "name_bn": "ফ্র্যাকচার ফিক্সেশন সার্জারি",
+      "department": "orthopedic",
+      "illustration": "joints",
+      "description": "Coordinate a planned orthopaedic review of fracture records and discuss surgical or follow-up arrangements.",
+      "description_bn": "ফ্র্যাকচারের রিপোর্ট নিয়ে পরিকল্পিত অর্থোপেডিক পরামর্শ, অস্ত্রোপচার বা ফলোআপের সমন্বয়ে সহায়তা।"
+    },
+    {
+      "slug": "lung-cancer",
+      "name": "Lung Cancer Care",
+      "name_bn": "ফুসফুসের ক্যান্সার",
+      "department": "cancer",
+      "illustration": "lungs",
+      "description": "Arrange a lung-cancer specialist review and request a hospital plan based on available reports.",
+      "description_bn": "ফুসফুসের ক্যান্সারের রিপোর্ট অনুযায়ী বিশেষজ্ঞের মূল্যায়ন ও হাসপাতালের পরিকল্পনা জানতে সহায়তা।"
+    },
+    {
+      "slug": "prostate-cancer",
+      "name": "Prostate Cancer Care",
+      "name_bn": "প্রোস্টেট ক্যান্সার",
+      "department": "cancer",
+      "illustration": "kidneys",
+      "description": "Coordinate a prostate-cancer consultation with the relevant urology and oncology team.",
+      "description_bn": "প্রোস্টেট ক্যান্সার নিয়ে ইউরোলজি ও অনকোলজি টিমের পরামর্শের জন্য অ্যাপয়েন্টমেন্টের সমন্বয়।"
+    },
+    {
+      "slug": "urinary-problems",
+      "name": "Urinary Problems",
+      "name_bn": "প্রস্রাবের সমস্যা",
+      "department": "urology",
+      "illustration": "kidneys",
+      "description": "Find a urology specialist to review urinary concerns and arrange an individual consultation.",
+      "description_bn": "প্রস্রাবের সমস্যা মূল্যায়ন ও ব্যক্তিগত পরামর্শের জন্য ইউরোলজি বিশেষজ্ঞের অ্যাপয়েন্টমেন্টে সহায়তা।"
+    },
+    {
+      "slug": "abdominal-tumour",
+      "name": "Abdominal Tumour Evaluation",
+      "name_bn": "পেটের টিউমার মূল্যায়ন",
+      "department": "cancer",
+      "illustration": "digestive",
+      "description": "Share existing reports with the appropriate hospital team to arrange an abdominal-tumour evaluation.",
+      "description_bn": "পেটের টিউমারের বিদ্যমান রিপোর্ট অনুযায়ী উপযুক্ত হাসপাতাল টিমের মূল্যায়নে যোগাযোগের সমন্বয়।"
+    },
+    {
+      "slug": "mens-sexual-health",
+      "name": "Men's Sexual Health",
+      "name_bn": "পুরুষের যৌন স্বাস্থ্য",
+      "department": "urology",
+      "illustration": "general",
+      "description": "Arrange a confidential consultation with a suitable specialist for men's sexual-health concerns.",
+      "description_bn": "পুরুষের যৌন স্বাস্থ্যসংক্রান্ত বিষয়ে উপযুক্ত বিশেষজ্ঞের গোপনীয় পরামর্শের জন্য যোগাযোগে সহায়তা।"
+    },
+    {
+      "slug": "pcos",
+      "name": "Polycystic Ovary Syndrome (PCOS)",
+      "name_bn": "পলিসিস্টিক ওভারি সিনড্রোম (PCOS)",
+      "department": "obstetrics-gynecology",
+      "illustration": "womens-health",
+      "description": "Coordinate a gynaecology consultation for PCOS, existing reports and individual follow-up needs.",
+      "description_bn": "পিসিওএস, বিদ্যমান রিপোর্ট ও ব্যক্তিগত ফলোআপের প্রয়োজন নিয়ে গাইনি বিশেষজ্ঞের পরামর্শে সহায়তা।"
+    },
+    {
+      "slug": "gallbladder-stones",
+      "name": "Gallbladder Stones",
+      "name_bn": "পিত্তথলির পাথর",
+      "department": "gastroenterology",
+      "illustration": "liver",
+      "description": "Arrange a specialist review of gallbladder-stone reports and discuss the hospital's proposed next steps.",
+      "description_bn": "পিত্তথলির পাথরের রিপোর্ট পর্যালোচনা ও হাসপাতালের পরবর্তী পরিকল্পনা জানতে বিশেষজ্ঞের অ্যাপয়েন্টমেন্টে সহায়তা।"
+    },
+    {
+      "slug": "piles-fistula",
+      "name": "Piles & Fistula Care",
+      "name_bn": "পাইলস ও ফিস্টুলা",
+      "department": "general-surgery",
+      "illustration": "digestive",
+      "description": "Coordinate a surgical consultation for piles or fistula concerns and a hospital estimate when available.",
+      "description_bn": "পাইলস বা ফিস্টুলা বিষয়ে সার্জনের পরামর্শ ও হাসপাতালের খরচের ধারণা পেতে যোগাযোগে সহায়তা।"
+    },
+    {
+      "slug": "thyroid-disorders",
+      "name": "Thyroid Disorders",
+      "name_bn": "থাইরয়েডের রোগ",
+      "department": "endocrinology",
+      "illustration": "thyroid",
+      "description": "Find an endocrinology specialist to review thyroid concerns, test reports and follow-up requirements.",
+      "description_bn": "থাইরয়েডের সমস্যা, পরীক্ষার রিপোর্ট ও ফলোআপ নিয়ে এন্ডোক্রাইন বিশেষজ্ঞের পরামর্শে সহায়তা।"
+    },
+    {
+      "slug": "diabetes",
+      "name": "Diabetes Care",
+      "name_bn": "ডায়াবেটিস",
+      "department": "endocrinology",
+      "illustration": "thyroid",
+      "description": "Arrange a specialist diabetes review and coordinate the documents needed for a planned consultation.",
+      "description_bn": "ডায়াবেটিসের বিশেষজ্ঞ মূল্যায়ন ও পরিকল্পিত পরামর্শের জন্য প্রয়োজনীয় নথি প্রস্তুতির সমন্বয়।"
+    },
+    {
+      "slug": "cervical-cancer",
+      "name": "Cervical Cancer Care",
+      "name_bn": "জরায়ুমুখের ক্যান্সার",
+      "department": "cancer",
+      "illustration": "womens-health",
+      "description": "Connect with a gynaecologic oncology team for cervical-cancer report review and treatment planning.",
+      "description_bn": "জরায়ুমুখের ক্যান্সারের রিপোর্ট পর্যালোচনা ও চিকিৎসার পরিকল্পনার জন্য গাইনি-অনকোলজি টিমের সঙ্গে যোগাযোগে সহায়তা।"
+    },
+    {
+      "slug": "eye-care",
+      "name": "Eye Care",
+      "name_bn": "চোখের চিকিৎসা",
+      "department": "ophthalmology",
+      "illustration": "eye",
+      "description": "Coordinate an ophthalmology consultation for eye concerns and review of previous eye-care records.",
+      "description_bn": "চোখের সমস্যা ও আগের চিকিৎসার নথি নিয়ে চক্ষু বিশেষজ্ঞের অ্যাপয়েন্টমেন্টে সহায়তা।"
+    },
+    {
+      "slug": "gastric-indigestion",
+      "name": "Gastric Problems & Indigestion",
+      "name_bn": "গ্যাস্ট্রিক ও বদহজম",
+      "department": "gastroenterology",
+      "illustration": "digestive",
+      "description": "Arrange a gastroenterology consultation to review ongoing gastric concerns and indigestion.",
+      "description_bn": "দীর্ঘদিনের গ্যাস্ট্রিক বা বদহজমের মূল্যায়নে গ্যাস্ট্রোএন্টারোলজি বিশেষজ্ঞের পরামর্শ পেতে সহায়তা।"
+    },
+    {
+      "slug": "throat-cancer",
+      "name": "Throat Cancer Care",
+      "name_bn": "গলার ক্যান্সার",
+      "department": "cancer",
+      "illustration": "ear",
+      "description": "Arrange a review with the relevant ENT and oncology team for throat-cancer care planning.",
+      "description_bn": "গলার ক্যান্সারের চিকিৎসার পরিকল্পনা নিয়ে নাক-কান-গলা ও অনকোলজি টিমের পরামর্শে সহায়তা।"
+    },
+    {
+      "slug": "pregnancy-miscarriage",
+      "name": "Pregnancy & Miscarriage Care",
+      "name_bn": "গর্ভাবস্থা ও গর্ভপাত-পরবর্তী যত্ন",
+      "department": "obstetrics-gynecology",
+      "illustration": "womens-health",
+      "description": "Coordinate a planned obstetric consultation for pregnancy-related concerns or care following pregnancy loss.",
+      "description_bn": "গর্ভাবস্থার উদ্বেগ বা গর্ভপাতের পর যত্ন নিয়ে পরিকল্পিত প্রসূতি বিশেষজ্ঞের পরামর্শ পেতে সহায়তা।"
+    },
+    {
+      "slug": "cholesterol-triglycerides",
+      "name": "Cholesterol & Triglycerides",
+      "name_bn": "কোলেস্টেরল ও ট্রাইগ্লিসারাইড",
+      "department": "cardiac",
+      "illustration": "heart",
+      "description": "Arrange a specialist review of lipid reports and discuss individual follow-up needs.",
+      "description_bn": "কোলেস্টেরল ও ট্রাইগ্লিসারাইডের রিপোর্ট পর্যালোচনা এবং ব্যক্তিগত ফলোআপের পরামর্শে সহায়তা।"
+    },
+    {
+      "slug": "colon-cancer",
+      "name": "Colon Cancer Care",
+      "name_bn": "কোলন ক্যান্সার",
+      "department": "cancer",
+      "illustration": "digestive",
+      "description": "Coordinate an oncology consultation for colon cancer and a review of the hospital's proposed care plan.",
+      "description_bn": "কোলন ক্যান্সারের রিপোর্ট ও হাসপাতালের চিকিৎসা পরিকল্পনা নিয়ে অনকোলজি বিশেষজ্ঞের পরামর্শে সহায়তা।"
+    },
+    {
+      "slug": "covid-19",
+      "name": "COVID-19 Follow-up Care",
+      "name_bn": "কোভিড-১৯ পরবর্তী যত্ন",
+      "department": "pulmonology",
+      "illustration": "lungs",
+      "description": "Arrange a planned specialist consultation for ongoing concerns following COVID-19.",
+      "description_bn": "কোভিড-১৯-এর পর চলমান সমস্যা নিয়ে পরিকল্পিত বিশেষজ্ঞ পরামর্শের জন্য যোগাযোগে সহায়তা।"
+    },
+    {
+      "slug": "kidney-stones",
+      "name": "Kidney Stones",
+      "name_bn": "কিডনির পাথর",
+      "department": "urology",
+      "illustration": "kidneys",
+      "description": "Find a urology specialist to review kidney-stone reports and discuss hospital appointment options.",
+      "description_bn": "কিডনির পাথরের রিপোর্ট মূল্যায়ন ও হাসপাতালের অ্যাপয়েন্টমেন্টের জন্য ইউরোলজি বিশেষজ্ঞ খুঁজতে সহায়তা।"
+    },
+    {
+      "slug": "kidney-cancer",
+      "name": "Kidney Cancer Care",
+      "name_bn": "কিডনির ক্যান্সার",
+      "department": "cancer",
+      "illustration": "kidneys",
+      "description": "Coordinate a kidney-cancer consultation with the appropriate urology and oncology team.",
+      "description_bn": "কিডনির ক্যান্সার নিয়ে উপযুক্ত ইউরোলজি ও অনকোলজি টিমের অ্যাপয়েন্টমেন্টের সমন্বয়।"
+    },
+    {
+      "slug": "ear-care",
+      "name": "Ear & Hearing Care",
+      "name_bn": "কান ও শ্রবণের চিকিৎসা",
+      "department": "ent",
+      "illustration": "ear",
+      "description": "Connect with an ENT specialist for ear or hearing concerns and a review of existing tests.",
+      "description_bn": "কান বা শ্রবণের সমস্যা এবং বিদ্যমান পরীক্ষার রিপোর্ট নিয়ে নাক-কান-গলা বিশেষজ্ঞের পরামর্শে সহায়তা।"
+    },
+    {
+      "slug": "ovarian-cysts",
+      "name": "Ovarian Cysts",
+      "name_bn": "ওভারিয়ান সিস্ট",
+      "department": "obstetrics-gynecology",
+      "illustration": "womens-health",
+      "description": "Arrange a gynaecology consultation to review ovarian-cyst reports and discuss individual next steps.",
+      "description_bn": "ওভারিয়ান সিস্টের রিপোর্ট মূল্যায়ন ও ব্যক্তিগত করণীয় জানতে গাইনি বিশেষজ্ঞের পরামর্শে সহায়তা।"
+    },
+    {
+      "slug": "epilepsy",
+      "name": "Epilepsy Care",
+      "name_bn": "মৃগীরোগ বা এপিলেপসি",
+      "department": "neurology",
+      "illustration": "brain",
+      "description": "Find a neurologist for a planned epilepsy review, previous records and follow-up coordination.",
+      "description_bn": "মৃগীরোগের পরিকল্পিত মূল্যায়ন, আগের রিপোর্ট ও ফলোআপ নিয়ে নিউরোলজি বিশেষজ্ঞের সঙ্গে যোগাযোগে সহায়তা।"
+    },
+    {
+      "slug": "allergy-care",
+      "name": "Allergy Care",
+      "name_bn": "অ্যালার্জির চিকিৎসা",
+      "department": "dermatology",
+      "illustration": "skin",
+      "description": "Coordinate a consultation with an appropriate specialist to review allergy concerns and previous treatment records.",
+      "description_bn": "অ্যালার্জি-সংক্রান্ত উদ্বেগ ও আগের চিকিৎসার তথ্য পর্যালোচনায় উপযুক্ত বিশেষজ্ঞের অ্যাপয়েন্টমেন্টে সহায়তা।"
+    },
+    {
+      "slug": "appendicitis",
+      "name": "Appendicitis Surgical Consultation",
+      "name_bn": "অ্যাপেন্ডিসাইটিসের সার্জারি পরামর্শ",
+      "department": "general-surgery",
+      "illustration": "digestive",
+      "description": "Coordinate a planned surgical consultation or follow-up related to appendicitis.",
+      "description_bn": "অ্যাপেন্ডিসাইটিস-সংক্রান্ত পরিকল্পিত সার্জারি পরামর্শ বা ফলোআপের জন্য যোগাযোগের সমন্বয়।"
+    },
+    {
+      "slug": "bone-marrow-transplant",
+      "name": "Bone Marrow Transplant Evaluation",
+      "name_bn": "অস্থিমজ্জা প্রতিস্থাপন মূল্যায়ন",
+      "department": "hematology",
+      "illustration": "blood",
+      "description": "Arrange an assessment with a hospital bone-marrow transplant team; the hospital determines eligibility and the care plan.",
+      "description_bn": "হাসপাতালের অস্থিমজ্জা প্রতিস্থাপন টিমের মূল্যায়নে যোগাযোগের সমন্বয়; উপযুক্ততা ও চিকিৎসার পরিকল্পনা হাসপাতাল নির্ধারণ করে।"
+    },
+    {
+      "slug": "vitamin-deficiency",
+      "name": "Vitamin Deficiency",
+      "name_bn": "ভিটামিনের ঘাটতি",
+      "department": "internal-medicine",
+      "illustration": "general",
+      "description": "Arrange a medical consultation to review vitamin-deficiency concerns and available test results.",
+      "description_bn": "ভিটামিনের ঘাটতির উদ্বেগ ও বিদ্যমান পরীক্ষার রিপোর্ট নিয়ে চিকিৎসকের পরামর্শ পেতে সহায়তা।"
+    },
+    {
+      "slug": "pain-management",
+      "name": "Pain Management",
+      "name_bn": "ব্যথার চিকিৎসা",
+      "department": "rehabilitation",
+      "illustration": "rehabilitation",
+      "description": "Connect with a pain or rehabilitation specialist to discuss ongoing pain and a planned hospital review.",
+      "description_bn": "চলমান ব্যথা ও পরিকল্পিত মূল্যায়ন নিয়ে ব্যথা বা পুনর্বাসন বিশেষজ্ঞের সঙ্গে যোগাযোগে সহায়তা।"
+    },
+    {
+      "slug": "nasal-issues",
+      "name": "Nasal Problems & Nosebleeds",
+      "name_bn": "নাকের সমস্যা ও নাক দিয়ে রক্ত পড়া",
+      "department": "ent",
+      "illustration": "ear",
+      "description": "Arrange a planned ENT consultation for recurring nasal concerns and review of previous records.",
+      "description_bn": "বারবার হওয়া নাকের সমস্যা ও আগের রিপোর্ট নিয়ে পরিকল্পিত নাক-কান-গলা বিশেষজ্ঞের পরামর্শে সহায়তা।"
+    },
+    {
+      "slug": "cochlear-implant",
+      "name": "Cochlear Implant Evaluation",
+      "name_bn": "ককলিয়ার ইমপ্লান্ট মূল্যায়ন",
+      "department": "ent",
+      "illustration": "ear",
+      "description": "Coordinate a hearing-team assessment to discuss cochlear implant suitability and hospital requirements.",
+      "description_bn": "ককলিয়ার ইমপ্লান্টের উপযুক্ততা ও হাসপাতালের প্রয়োজনীয়তা জানতে শ্রবণ বিশেষজ্ঞ টিমের মূল্যায়নে সহায়তা।"
+    },
+    {
+      "slug": "cancer-tumour",
+      "name": "Cancer & Tumour Evaluation",
+      "name_bn": "ক্যান্সার ও টিউমার মূল্যায়ন",
+      "department": "cancer",
+      "illustration": "cancer",
+      "description": "Find an appropriate oncology team to review cancer or tumour reports and discuss the proposed care pathway.",
+      "description_bn": "ক্যান্সার বা টিউমারের রিপোর্ট মূল্যায়ন ও চিকিৎসার পরিকল্পনা জানতে উপযুক্ত অনকোলজি টিমের সঙ্গে যোগাযোগে সহায়তা।"
+    },
+    {
+      "slug": "blood-disorders",
+      "name": "Blood Disorders",
+      "name_bn": "রক্তরোগ",
+      "department": "hematology",
+      "illustration": "blood",
+      "description": "Arrange a haematology consultation to review blood-test findings and individual follow-up needs.",
+      "description_bn": "রক্ত পরীক্ষার ফলাফল ও ব্যক্তিগত ফলোআপের প্রয়োজন নিয়ে হেমাটোলজি বিশেষজ্ঞের পরামর্শে সহায়তা।"
+    },
+    {
+      "slug": "acl-reconstruction",
+      "name": "ACL Reconstruction Surgery",
+      "name_bn": "এসিএল পুনর্গঠন অস্ত্রোপচার",
+      "department": "orthopedic",
+      "illustration": "joints",
+      "description": "Coordinate an orthopaedic assessment for ACL reconstruction and discuss appointment and rehabilitation planning.",
+      "description_bn": "এসিএল পুনর্গঠন অস্ত্রোপচারের মূল্যায়ন, অ্যাপয়েন্টমেন্ট ও পুনর্বাসনের পরিকল্পনা নিয়ে যোগাযোগে সহায়তা।"
+    }
+  ]
+}

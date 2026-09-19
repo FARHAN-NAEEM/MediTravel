@@ -122,10 +122,24 @@ class PageController extends Controller
         ]);
     }
 
-    public function treatments()
+    public function treatments(Request $request)
     {
+        $filters = $request->validate([
+            'q' => ['nullable', 'string', 'max:120'],
+            'department' => ['nullable', 'string', 'max:255'],
+        ]);
+        $search = trim($filters['q'] ?? '');
+        $department = $filters['department'] ?? '';
+
         return view('treatments.index', [
-            'treatments' => Treatment::with('department', 'costs.hospital')->orderBy('name')->paginate(12),
+            'treatments' => Treatment::with('department')
+                ->when($search !== '', fn ($query) => $query->search($search))
+                ->when($department !== '', fn ($query) => $query->whereHas('department', fn ($query) => $query->where('slug', $department)))
+                ->orderBy('sort_order')->orderBy('name')->paginate(24)->withQueryString(),
+            'departments' => Department::whereHas('treatments')->withCount('treatments')->orderBy('name')->get(),
+            'catalogCount' => Treatment::count(),
+            'search' => $search,
+            'selectedDepartment' => $department,
         ]);
     }
 
@@ -133,6 +147,8 @@ class PageController extends Controller
     {
         return view('treatments.show', [
             'treatment' => $treatment->load('department', 'costs.hospital.city'),
+            'relatedTreatments' => Treatment::with('department')->where('department_id', $treatment->department_id)
+                ->whereKeyNot($treatment->id)->orderBy('sort_order')->limit(4)->get(),
         ]);
     }
 

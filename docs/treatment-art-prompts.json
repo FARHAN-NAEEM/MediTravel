@@ -1,0 +1,80 @@
+{
+  "generator": "OpenAI built-in image_gen",
+  "date": "2026-09-20",
+  "optimization": "640x640 WebP quality 82; original generated PNGs retained",
+  "assets": [
+    {
+      "file": "public/images/treatments/heart.webp",
+      "brief": "Original 3D editorial anatomical heart with muted teal and coral, cool pale background, centered square composition, no text or logos.",
+      "note": "Brief recorded; exact first-generation prompt was not retained."
+    },
+    {
+      "file": "public/images/treatments/joints.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a simplified knee joint, ivory femur and tibia with smooth turquoise cartilage, a small cobalt orthopaedic implant component beside it. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/brain.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a simplified brain with two clearly formed hemispheres, lavender-pink folds and subtle teal neural pathways. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/kidneys.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a pair of smooth kidney-shaped anatomical models, coral kidneys with teal connecting vessels and pale ureters. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/liver.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a simplified liver model in muted terracotta with a tiny sage-green gallbladder tucked below. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/lungs.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a simplified pair of lungs, pale dusty pink lobes with branching teal bronchi. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/womens-health.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a simplified anatomical uterus with fallopian tubes and ovaries, soft rose and teal medical model, no body or person. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/skin.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a small sculpted cross-section of healthy skin layers, coral epidermis and cream dermis with two tiny hair follicles, no wounds. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/digestive.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a smooth sculpted simplified stomach and loop of intestine, coral stomach with sage-teal bowel. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/breast.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a symbolic pink satin breast-health awareness ribbon sculpted in matte rose ceramic, with a small teal protective shield beside it. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or liquid blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/ear.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a sculpted human outer ear in warm peach ceramic with a small teal hearing-aid device alongside, medical non-photographic model. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or liquid blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/eye.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a sculpted human eye model with white sclera, teal iris and black pupil, anatomically recognizable, no face or body. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or liquid blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/blood.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: three sculpted red blood cells shaped like biconcave discs in soft coral and a single pale ivory white blood cell, small elegant cluster. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or liquid blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/thyroid.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a recognizable butterfly-shaped thyroid gland medical model in coral and soft rose wrapped around a short ivory trachea. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/rehabilitation.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a sculptural teal lower-leg and foot model beside a small coral physiotherapy exercise ball and light resistance band, no person. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/cancer.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a refined lavender cancer awareness ribbon sculpted in satin ceramic beside a miniature teal laboratory microscope, symbolic oncology care. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/general.webp",
+      "prompt": "Use case: stylized-concept. Single original treatment category illustration for Asian Health Connect: a neatly curved teal stethoscope with a brushed silver chest piece beside a small coral medical cross sculpture. Premium 3D editorial medical sculpture in matte ceramic and translucent resin, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Square image, isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury, or blood. Symbolic category art, not a clinical diagram. Elegant, reassuring and adult, not cartoonish."
+    },
+    {
+      "file": "public/images/treatments/hip.webp",
+      "prompt": "Use case: stylized-concept. Original square treatment category illustration for Asian Health Connect: a clearly recognizable adult hip joint, the curved side of a pelvis with the round femoral head in its socket and upper femur, showing a tasteful metallic hip replacement stem alongside. Not a knee. Premium 3D editorial medical sculpture in matte ivory ceramic, muted teal cartilage and polished titanium, soft studio light. Solid very pale cool gray #f4f8f8 background and faint contact shadow. Isolated object centered within central 65%, generous margins, complete object visible. No text, lettering, logos, watermark, card frame, people, graphic injury or blood. Symbolic category art, not a clinical diagram. Elegant and reassuring."
+    }
+  ]
+}

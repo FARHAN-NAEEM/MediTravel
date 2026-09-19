@@ -28,7 +28,7 @@ class SearchController extends Controller
             return redirect()->route('hotels.show', $hotel);
         }
 
-        if ($treatment = Treatment::where('name', $query)->first()) {
+        if ($treatment = Treatment::where('name', $query)->orWhere('name_bn', $query)->first()) {
             return redirect()->route('treatments.show', $treatment);
         }
 
@@ -59,7 +59,7 @@ class SearchController extends Controller
                 ->limit(9)
                 ->get(),
             'treatments' => Treatment::with('department')
-                ->where('name', 'like', $likeQuery)
+                ->search($query)
                 ->orderByDesc('is_featured')
                 ->orderBy('name')
                 ->limit(9)

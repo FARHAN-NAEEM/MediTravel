@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Models\Concerns\ClearsSiteContactCache;
+use App\Models\Concerns\HasLocalizedContent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class ContactChannel extends Model
 {
     use ClearsSiteContactCache;
+    use HasLocalizedContent;
 
     public const TYPES = [
         'phone' => 'Phone',

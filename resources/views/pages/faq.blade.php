@@ -4,8 +4,8 @@
         <div class="mt-8 grid gap-4">
             @foreach ($faqs as $faq)
                 <details class="card p-5">
-                    <summary class="cursor-pointer font-bold">{{ $faq->question }}</summary>
-                    <p class="mt-4 leading-7 text-slate-600">{{ $faq->answer }}</p>
+                    <summary class="cursor-pointer font-bold">{{ $faq->localized('question') }}</summary>
+                    <p class="mt-4 leading-7 text-slate-600">{{ $faq->localized('answer') }}</p>
                 </details>
             @endforeach
         </div>

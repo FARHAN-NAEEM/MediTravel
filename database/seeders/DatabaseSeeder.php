@@ -229,5 +229,6 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->call(SiteContactSeeder::class);
+        $this->call(BanglaContentSeeder::class);
     }
 }

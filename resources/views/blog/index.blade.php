@@ -4,9 +4,9 @@
         <div class="mt-8 grid gap-5 md:grid-cols-3">
             @foreach ($posts as $post)
                 <a href="{{ route('blog.show', $post) }}" class="card p-5">
-                    <div class="text-sm font-semibold text-tealTrust">{{ $post->category?->name }}</div>
-                    <div class="mt-3 text-lg font-bold">{{ $post->title }}</div>
-                    <p class="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">{{ $post->meta_description }}</p>
+                    <div class="text-sm font-semibold text-tealTrust">{{ $post->category?->localized('name') }}</div>
+                    <div class="mt-3 text-lg font-bold">{{ $post->localized('title') }}</div>
+                    <p class="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">{{ $post->localized('meta_description') }}</p>
                 </a>
             @endforeach
         </div>

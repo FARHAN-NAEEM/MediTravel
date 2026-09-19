@@ -4,8 +4,8 @@
         <div class="mt-8 grid gap-5 md:grid-cols-3">
             @foreach ($services as $service)
                 <a href="{{ route('services.show', $service) }}" class="card p-5 transition hover:shadow-md">
-                    <div class="text-lg font-bold">{{ $service->name }}</div>
-                    <p class="mt-3 text-sm leading-6 text-slate-600">{{ $service->short_desc }}</p>
+                    <div class="text-lg font-bold">{{ $service->localized('name') }}</div>
+                    <p class="mt-3 text-sm leading-6 text-slate-600">{{ $service->localized('short_desc') }}</p>
                 </a>
             @endforeach
         </div>

@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Models\Concerns\ClearsSiteContactCache;
+use App\Models\Concerns\HasLocalizedContent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class OfficeLocation extends Model
 {
     use ClearsSiteContactCache;
+    use HasLocalizedContent;
 
     protected $guarded = [];
 

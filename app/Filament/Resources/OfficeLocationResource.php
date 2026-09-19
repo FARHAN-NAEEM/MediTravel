@@ -29,7 +29,7 @@ class OfficeLocationResource extends Resource
 
     protected static ?int $navigationSort = 2;
 
-    protected static string | array $routeMiddleware = [
+    protected static string|array $routeMiddleware = [
         EnsureOwner::class.':'.AdminAccess::MANAGE_SITE_SETTINGS_PERMISSION,
     ];
 
@@ -39,9 +39,12 @@ class OfficeLocationResource extends Resource
             Forms\Components\Section::make('Office details')
                 ->columns(2)
                 ->schema([
-                    Forms\Components\TextInput::make('name')->required()->maxLength(255),
-                    Forms\Components\TextInput::make('district')->label('District / City')->required()->maxLength(255),
-                    Forms\Components\Textarea::make('address')->required()->rows(3)->columnSpanFull(),
+                    Forms\Components\TextInput::make('name')->label('Name (English)')->required()->maxLength(255),
+                    Forms\Components\TextInput::make('name_bn')->label('Name (Bangla)')->maxLength(255),
+                    Forms\Components\TextInput::make('district')->label('District / City (English)')->required()->maxLength(255),
+                    Forms\Components\TextInput::make('district_bn')->label('District / City (Bangla)')->maxLength(255),
+                    Forms\Components\Textarea::make('address')->label('Address (English)')->required()->rows(3),
+                    Forms\Components\Textarea::make('address_bn')->label('Address (Bangla)')->rows(3),
                     Forms\Components\TextInput::make('phone')
                         ->tel()
                         ->rule('regex:/^\+?[0-9][0-9\s().-]{6,30}$/')

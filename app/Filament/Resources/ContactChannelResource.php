@@ -31,7 +31,7 @@ class ContactChannelResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
-    protected static string | array $routeMiddleware = [
+    protected static string|array $routeMiddleware = [
         EnsureOwner::class.':'.AdminAccess::MANAGE_SITE_SETTINGS_PERMISSION,
     ];
 
@@ -48,8 +48,12 @@ class ContactChannelResource extends Resource
                         ->native(false)
                         ->live(),
                     Forms\Components\TextInput::make('label')
+                        ->label('Label (English)')
                         ->placeholder('Main Office, Support, Visa Help')
                         ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('label_bn')
+                        ->label('Label (Bangla)')
                         ->maxLength(255),
                     Forms\Components\TextInput::make('value')
                         ->label(fn (Get $get): string => match ($get('type')) {

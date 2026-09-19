@@ -193,7 +193,7 @@
                         @forelse ($footerPhones as $channel)
                             <a href="{{ $channel->destinationUrl() }}" class="group flex items-start gap-3">
                                 <span class="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-white text-tealTrust shadow-sm"><x-heroicon-o-phone class="h-4 w-4" /></span>
-                                <span><strong class="block text-navyDeep group-hover:text-tealTrust">{{ $channel->label }}</strong><span class="text-slate-600">{{ $channel->value }}</span></span>
+                                <span><strong class="block text-navyDeep group-hover:text-tealTrust">{{ $channel->localized('label') }}</strong><span class="text-slate-600">{{ $channel->value }}</span></span>
                             </a>
                         @empty
                             @if ($siteSettings['support_phone'] ?? null)
@@ -204,14 +204,14 @@
                         @foreach ($footerWhatsapps as $channel)
                             <a href="{{ $channel->destinationUrl() }}" target="_blank" rel="noopener noreferrer" class="group flex items-start gap-3">
                                 <span class="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-white text-tealTrust shadow-sm"><x-heroicon-o-chat-bubble-left-right class="h-4 w-4" /></span>
-                                <span><strong class="block text-navyDeep group-hover:text-tealTrust">{{ $channel->label }}</strong><span class="text-slate-600">{{ $channel->value }}</span></span>
+                                <span><strong class="block text-navyDeep group-hover:text-tealTrust">{{ $channel->localized('label') }}</strong><span class="text-slate-600">{{ $channel->value }}</span></span>
                             </a>
                         @endforeach
 
                         @forelse ($footerEmails as $channel)
                             <a href="{{ $channel->destinationUrl() }}" class="group flex items-start gap-3">
                                 <span class="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-white text-tealTrust shadow-sm"><x-heroicon-o-envelope class="h-4 w-4" /></span>
-                                <span class="min-w-0"><strong class="block text-navyDeep group-hover:text-tealTrust">{{ $channel->label }}</strong><span class="break-words text-slate-600">{{ $channel->value }}</span></span>
+                                <span class="min-w-0"><strong class="block text-navyDeep group-hover:text-tealTrust">{{ $channel->localized('label') }}</strong><span class="break-words text-slate-600">{{ $channel->value }}</span></span>
                             </a>
                         @empty
                             @if ($siteSettings['support_email'] ?? null)
@@ -237,12 +237,12 @@
                         @foreach ($footerOffices as $office)
                             <address class="border-l-2 border-accent/70 pl-4 not-italic">
                                 @if ($office->map_url)
-                                    <a href="{{ $office->map_url }}" target="_blank" rel="noopener noreferrer" class="font-bold text-navyDeep transition hover:text-tealTrust">{{ $office->name }}</a>
+                                    <a href="{{ $office->map_url }}" target="_blank" rel="noopener noreferrer" class="font-bold text-navyDeep transition hover:text-tealTrust">{{ $office->localized('name') }}</a>
                                 @else
-                                    <div class="font-bold text-navyDeep">{{ $office->name }}</div>
+                                    <div class="font-bold text-navyDeep">{{ $office->localized('name') }}</div>
                                 @endif
-                                <div class="mt-1 text-xs font-semibold uppercase text-tealTrust">{{ $office->district }}</div>
-                                <p class="readable-copy mt-2 text-sm leading-6 text-slate-600">{{ $office->address }}</p>
+                                <div class="mt-1 text-xs font-semibold uppercase text-tealTrust">{{ $office->localized('district') }}</div>
+                                <p class="readable-copy mt-2 text-sm leading-6 text-slate-600">{{ $office->localized('address') }}</p>
                                 @if ($office->phone)
                                     <a href="tel:{{ preg_replace('/[^0-9+]/', '', $office->phone) }}" class="mt-2 inline-flex items-center gap-2 text-sm text-slate-600 hover:text-tealTrust"><x-heroicon-o-phone class="h-4 w-4" />{{ $office->phone }}</a>
                                 @endif

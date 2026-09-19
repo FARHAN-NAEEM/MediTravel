@@ -23,6 +23,7 @@ class HospitalResource extends Resource
     {
         return $form->schema([
             Forms\Components\TextInput::make('name')->required()->maxLength(255),
+            Forms\Components\TextInput::make('name_bn')->label('Name (Bangla)')->maxLength(255),
             Forms\Components\TextInput::make('slug')->required()->unique(ignoreRecord: true)->maxLength(255),
             Forms\Components\Select::make('country_id')
                 ->relationship('country', 'name')

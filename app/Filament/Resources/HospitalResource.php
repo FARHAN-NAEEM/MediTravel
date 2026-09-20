@@ -25,6 +25,7 @@ class HospitalResource extends Resource
             Forms\Components\TextInput::make('name')->required()->maxLength(255),
             Forms\Components\TextInput::make('name_bn')->label('Name (Bangla)')->maxLength(255),
             Forms\Components\TextInput::make('slug')->required()->unique(ignoreRecord: true)->maxLength(255),
+            Forms\Components\Select::make('hospital_group_id')->relationship('group', 'name')->searchable()->preload()->label('Hospital group'),
             Forms\Components\Select::make('country_id')
                 ->relationship('country', 'name')
                 ->searchable()
@@ -48,7 +49,12 @@ class HospitalResource extends Resource
                 ->searchable()
                 ->required(),
             Forms\Components\TextInput::make('accreditation')->maxLength(255),
+            Forms\Components\Select::make('care_type')->options(collect(Hospital::CARE_TYPES)->mapWithKeys(fn ($type) => [$type => __('hospitals.care_types.'.$type)]))->default('multi-specialty')->required(),
+            Forms\Components\FileUpload::make('logo')->image()->acceptedFileTypes(['image/png', 'image/jpeg', 'image/webp'])->disk('public')->directory('hospitals/logos')->maxSize(2048),
+            Forms\Components\FileUpload::make('images')->image()->acceptedFileTypes(['image/png', 'image/jpeg', 'image/webp'])->disk('public')->directory('hospitals/photos')->multiple()->reorderable()->maxFiles(5)->maxSize(5120),
+            Forms\Components\TextInput::make('source_url')->label('Official hospital page')->url()->rules(['nullable', 'url:http,https'])->maxLength(500),
             Forms\Components\Textarea::make('description')->columnSpanFull(),
+            Forms\Components\Textarea::make('description_bn')->label('Description (Bangla)')->columnSpanFull(),
             Forms\Components\Textarea::make('card_highlight_bn')
                 ->label('Card Highlight (Bangla)')
                 ->rows(2)
@@ -69,6 +75,7 @@ class HospitalResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('group.name')->label('Group')->sortable(),
                 Tables\Columns\TextColumn::make('city.name')->label('City')->sortable(),
                 Tables\Columns\TextColumn::make('card_highlight_bn')
                     ->label('Card Highlight')
@@ -79,6 +86,7 @@ class HospitalResource extends Resource
             ])
             ->filters([
                 Tables\Filters\TernaryFilter::make('is_featured'),
+                Tables\Filters\SelectFilter::make('hospital_group_id')->relationship('group', 'name')->label('Group'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

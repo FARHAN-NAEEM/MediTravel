@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\Hospital;
 use App\Models\Treatment;
 use Illuminate\Http\Response;
 use XMLWriter;
@@ -52,6 +53,19 @@ class SitemapController extends Controller
             }
         });
 
+        $xml->startElement('url');
+        $xml->writeElement('loc', route('hospitals.index'));
+        $xml->endElement();
+        Hospital::query()->orderBy('id')->chunkById(500, function ($hospitals) use ($xml): void {
+            foreach ($hospitals as $hospital) {
+                $xml->startElement('url');
+                $xml->writeElement('loc', route('hospitals.show', $hospital));
+                if ($hospital->updated_at) {
+                    $xml->writeElement('lastmod', $hospital->updated_at->toDateString());
+                }
+                $xml->endElement();
+            }
+        });
         $xml->endElement();
         $xml->endDocument();
 

@@ -11,12 +11,14 @@ use App\Models\Faq;
 use App\Models\HealthPackage;
 use App\Models\HeroImage;
 use App\Models\Hospital;
+use App\Models\HospitalGroup;
 use App\Models\Page;
 use App\Models\Review;
 use App\Models\Service;
 use App\Models\Treatment;
 use App\Models\VisaDocument;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PageController extends Controller
 {
@@ -47,7 +49,7 @@ class PageController extends Controller
         )->values();
 
         return view('pages.home', [
-            'featuredHospitals' => Hospital::with('city', 'country')
+            'featuredHospitals' => Hospital::with('city', 'country', 'group')
                 ->where(fn ($query) => $query
                     ->where('is_featured', true)
                     ->orWhereIn('slug', [
@@ -100,25 +102,44 @@ class PageController extends Controller
 
     public function hospitals(Request $request)
     {
+        $filters = $request->validate([
+            'q' => ['nullable', 'string', 'max:120'],
+            'country' => ['nullable', 'string', 'max:255'],
+            'city' => ['nullable', 'string', 'max:255'],
+            'group' => ['nullable', 'string', 'max:255'],
+            'care' => ['nullable', 'string', Rule::in(Hospital::CARE_TYPES)],
+        ]);
+        $search = trim($filters['q'] ?? '');
         $hospitals = Hospital::query()
-            ->with('city.country')
-            ->when($request->filled('city'), fn ($query) => $query->whereHas('city', fn ($city) => $city->where('slug', $request->city)))
-            ->when($request->filled('q'), fn ($query) => $query->where('name', 'like', '%'.$request->q.'%'))
+            ->with('city', 'country', 'group')
+            ->when($filters['country'] ?? '', fn ($query, $country) => $query->whereHas('country', fn ($query) => $query->where('slug', $country)))
+            ->when($filters['city'] ?? '', fn ($query, $city) => $query->whereHas('city', fn ($query) => $query->where('slug', $city)))
+            ->when($filters['group'] ?? '', fn ($query, $group) => $query->whereHas('group', fn ($query) => $query->where('slug', $group)))
+            ->when($filters['care'] ?? '', fn ($query, $care) => $query->where('care_type', $care))
+            ->when($search !== '', fn ($query) => $query->where(fn ($query) => $query
+                ->where('name', 'like', '%'.$search.'%')->orWhere('name_bn', 'like', '%'.$search.'%')
+                ->orWhereHas('group', fn ($query) => $query->where('name', 'like', '%'.$search.'%'))
+                ->orWhereHas('city', fn ($query) => $query->where('name', 'like', '%'.$search.'%'))))
             ->orderByDesc('is_featured')
             ->orderBy('sort_order')
+            ->orderBy('id')
             ->paginate(12)
             ->withQueryString();
 
         return view('hospitals.index', [
             'hospitals' => $hospitals,
-            'cities' => City::with('country')->orderBy('name')->get(),
+            'cities' => City::whereHas('hospitals')->with('country')->orderBy('name')->get(),
+            'countries' => Country::whereHas('hospitals')->orderBy('sort_order')->orderBy('name')->get(),
+            'groups' => HospitalGroup::whereHas('hospitals')->withCount('hospitals')->orderBy('sort_order')->orderBy('name')->get(),
+            'filters' => $filters,
+            'search' => $search,
         ]);
     }
 
     public function hospitalShow(Hospital $hospital)
     {
         return view('hospitals.show', [
-            'hospital' => $hospital->load('city.country', 'doctors.department', 'treatmentCosts.treatment'),
+            'hospital' => $hospital->load('city', 'country', 'group', 'doctors.department', 'treatmentCosts.treatment'),
         ]);
     }
 

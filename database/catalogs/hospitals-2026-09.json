@@ -1,0 +1,541 @@
+{
+    "reviewed_on": "2026-09-20",
+    "groups": [
+        {
+            "slug": "apollo",
+            "name": "Apollo Hospitals",
+            "website": "https://www.apollohospitals.com/",
+            "catalog_logo": "images/hospital-logos/apollo.webp"
+        },
+        {
+            "slug": "fortis",
+            "name": "Fortis Healthcare",
+            "website": "https://www.fortishealthcare.com/",
+            "catalog_logo": "images/hospital-logos/fortis.webp"
+        },
+        {
+            "slug": "manipal",
+            "name": "Manipal Hospitals",
+            "website": "https://www.manipalhospitals.com/home/",
+            "catalog_logo": "images/hospital-logos/manipal.webp"
+        },
+        {
+            "slug": "max",
+            "name": "Max Healthcare",
+            "website": "https://www.maxhealthcare.in/",
+            "catalog_logo": "images/hospital-logos/max.webp"
+        },
+        {
+            "slug": "hcg",
+            "name": "HCG Cancer Centre",
+            "website": "https://www.hcgoncology.com/",
+            "catalog_logo": "images/hospital-logos/hcg.webp"
+        },
+        {
+            "slug": "mgm",
+            "name": "MGM Healthcare",
+            "website": "https://mgmhealthcare.in/",
+            "catalog_logo": "images/hospital-logos/mgm.svg"
+        },
+        {
+            "slug": "rela",
+            "name": "Rela Hospital",
+            "website": "https://www.relainstitute.com/",
+            "catalog_logo": "images/hospital-logos/rela.webp"
+        },
+        {
+            "slug": "care",
+            "name": "CARE Hospitals",
+            "website": "https://www.carehospitals.com/",
+            "catalog_logo": "images/hospital-logos/care.webp"
+        },
+        {
+            "slug": "samitivej",
+            "name": "Samitivej Hospitals",
+            "website": "https://www.samitivejhospitals.com/",
+            "catalog_logo": "images/hospital-logos/samitivej.svg"
+        },
+        {
+            "slug": "agarwal",
+            "name": "Dr Agarwals Eye Hospital",
+            "website": "https://www.dragarwal.com/",
+            "catalog_logo": "images/hospital-logos/agarwal.svg"
+        },
+        {
+            "slug": "desun",
+            "name": "Desun Hospital",
+            "website": "https://desunhospital.com/",
+            "catalog_logo": "images/hospital-logos/desun.webp"
+        },
+        {
+            "slug": "rainbow",
+            "name": "Rainbow Children's Hospital",
+            "website": "https://www.rainbowhospitals.in/",
+            "catalog_logo": "images/hospital-logos/rainbow.svg"
+        },
+        {
+            "slug": "cmri",
+            "name": "CMRI",
+            "website": "https://www.ckbirlahospitals.com/cmri",
+            "catalog_logo": "images/hospital-logos/cmri.webp"
+        },
+        {
+            "slug": "ainu",
+            "name": "AINU Hospitals",
+            "website": "https://www.ainuindia.org/hyderabad/",
+            "catalog_logo": "images/hospital-logos/ainu.svg"
+        },
+        {
+            "slug": "hetaiheng",
+            "name": "Shijiazhuang Hetaiheng Hospital",
+            "website": "https://www.hetaihenghospital.com/",
+            "catalog_logo": "images/hospital-logos/hetaiheng.webp"
+        },
+        {
+            "slug": "hygeia",
+            "name": "Hygeia Healthcare",
+            "website": "https://www.hygeia-global.com/hygeia_en.html",
+            "catalog_logo": "images/hospital-logos/hygeia.webp"
+        },
+        {
+            "slug": "sparsh",
+            "name": "SPARSH Hospital",
+            "website": "https://www.sparshhospital.com/",
+            "catalog_logo": "images/hospital-logos/sparsh.svg"
+        },
+        {
+            "slug": "aster",
+            "name": "Aster Hospitals",
+            "website": "https://www.asterhospitals.in/hospitals/aster-cmi-bangalore",
+            "catalog_logo": "images/hospital-logos/aster.webp"
+        },
+        {
+            "slug": "artemis",
+            "name": "Artemis Hospitals",
+            "website": "https://www.artemishospitals.com/",
+            "catalog_logo": "images/hospital-logos/artemis.webp"
+        },
+        {
+            "slug": "aiims",
+            "name": "AIIMS New Delhi",
+            "website": "https://www.aiims.edu/index.php/en",
+            "catalog_logo": "images/hospital-logos/aiims.webp"
+        },
+        {
+            "slug": "sci",
+            "name": "SCI International Hospital",
+            "website": "https://www.scihospital.com/",
+            "catalog_logo": "images/hospital-logos/sci.webp"
+        },
+        {
+            "slug": "nova",
+            "name": "Nova IVF Fertility",
+            "website": "https://www.novaivffertility.com/",
+            "catalog_logo": "images/hospital-logos/nova.webp"
+        },
+        {
+            "slug": "indira",
+            "name": "Indira IVF",
+            "website": "https://www.indiraivf.com/",
+            "catalog_logo": "images/hospital-logos/indira.svg"
+        },
+        {
+            "slug": "narayana",
+            "name": "Narayana Health",
+            "website": "https://www.narayanahealth.org/",
+            "catalog_logo": "images/hospital-logos/narayana.webp"
+        },
+        {
+            "slug": "aig",
+            "name": "AIG Hospitals",
+            "website": "https://www.aighospitals.com/",
+            "catalog_logo": "images/hospital-logos/aig.webp"
+        },
+        {
+            "slug": "yashoda",
+            "name": "Yashoda Hospitals",
+            "website": "https://www.yashodahospitals.com/",
+            "catalog_logo": "images/hospital-logos/yashoda.webp"
+        },
+        {
+            "slug": "miot",
+            "name": "MIOT International",
+            "website": "https://www.miotinternational.com/",
+            "catalog_logo": "images/hospital-logos/miot.webp"
+        },
+        {
+            "slug": "gleneagles",
+            "name": "Gleneagles Hospitals",
+            "website": "https://www.gleneagleshospitals.co.in/chennai/perumbakkam",
+            "catalog_logo": "images/hospital-logos/gleneagles.webp"
+        },
+        {
+            "slug": "sri-ramachandra",
+            "name": "Sri Ramachandra Medical Centre",
+            "website": "https://srmc.sriramachandra.edu/",
+            "catalog_logo": "images/hospital-logos/sri-ramachandra.webp"
+        },
+        {
+            "slug": "kkr",
+            "name": "KKR ENT Hospital",
+            "website": "https://www.kkrenthospital.org/"
+        },
+        {
+            "slug": "manvi",
+            "name": "Manvi Hospitals",
+            "website": "https://manvihospitals.com/",
+            "catalog_logo": "images/hospital-logos/manvi.webp"
+        },
+        {
+            "slug": "cfc",
+            "name": "Chennai Fertility Centre",
+            "website": "https://chennaifertilitycenter.com/",
+            "catalog_logo": "images/hospital-logos/cfc.webp"
+        },
+        {
+            "slug": "iswarya",
+            "name": "Iswarya Fertility Centre",
+            "website": "https://www.iswaryafertility.com/",
+            "catalog_logo": "images/hospital-logos/iswarya.webp"
+        },
+        {
+            "slug": "archana",
+            "name": "Dr Archana IVF & Women Centre",
+            "website": "https://drarchanaivf.com/",
+            "catalog_logo": "images/hospital-logos/archana.webp"
+        },
+        {
+            "slug": "jeevan-mithra",
+            "name": "Jeevan Mithra Fertility Centre",
+            "website": "https://jeevanmithrafertilitycentre.com/",
+            "catalog_logo": "images/hospital-logos/jeevan-mithra.webp"
+        }
+    ],
+    "hospitals": [
+        {
+            "group": "apollo",
+            "name": "Apollo Hospitals, Greams Road, Chennai",
+            "city": "Chennai",
+            "aliases": [
+                "apollo-hospitals-greams-road-chennai-chennai",
+                "apollo-hospitals-chennai"
+            ],
+            "source": "https://www.apollohospitals.com/corporate/careers/why-work/our-locations.html",
+            "featured": true
+        },
+        {
+            "group": "fortis",
+            "name": "Fortis Hospital Anandapur, Kolkata",
+            "city": "Kolkata",
+            "aliases": [
+                "fortis-hospital-kolkata"
+            ],
+            "source": "https://www.fortishealthcare.com/hospitals",
+            "featured": true
+        },
+        {
+            "group": "manipal",
+            "name": "Manipal Hospital, Old Airport Road, Bengaluru",
+            "city": "Bengaluru",
+            "source": "https://www.manipalhospitals.com/home/",
+            "featured": true
+        },
+        {
+            "group": "max",
+            "name": "Max Super Speciality Hospital, Saket",
+            "city": "New Delhi",
+            "source": "https://www.maxhealthcare.in/",
+            "featured": true
+        },
+        {
+            "group": "manipal",
+            "name": "Manipal Hospital, Broadway, Kolkata",
+            "city": "Kolkata",
+            "source": "https://www.manipalhospitals.com/broadway/about-us/"
+        },
+        {
+            "group": "sparsh",
+            "name": "SPARSH Hospital, Hennur Road",
+            "city": "Bengaluru",
+            "source": "https://www.sparshhospital.com/"
+        },
+        {
+            "group": "aster",
+            "name": "Aster CMI Hospital, Bengaluru",
+            "city": "Bengaluru",
+            "source": "https://www.asterhospitals.in/hospitals/aster-cmi-bangalore"
+        },
+        {
+            "group": "hcg",
+            "name": "HCG Cancer Centre, K. R. Road",
+            "city": "Bengaluru",
+            "care_type": "cancer",
+            "source": "https://www.hcgoncology.com/cancer-centers/"
+        },
+        {
+            "group": "apollo",
+            "name": "Apollo Hospitals, Bannerghatta Road, Bangalore",
+            "city": "Bengaluru",
+            "aliases": [
+                "apollo-hospitals-bannerghatta-road-bangalore-bangalore"
+            ],
+            "source": "https://www.apollohospitals.com/corporate/careers/why-work/our-locations.html"
+        },
+        {
+            "group": "fortis",
+            "name": "Fortis Hospital, Bannerghatta Road",
+            "city": "Bengaluru",
+            "source": "https://www.fortishealthcare.com/hospitals"
+        },
+        {
+            "group": "max",
+            "name": "Max Hospital, Gurugram",
+            "city": "Gurugram",
+            "source": "https://www.maxhealthcare.in/"
+        },
+        {
+            "group": "artemis",
+            "name": "Artemis Hospital, Gurugram",
+            "city": "Gurugram",
+            "source": "https://www.artemishospitals.com/hospital-overview"
+        },
+        {
+            "group": "aiims",
+            "name": "All India Institute of Medical Sciences, New Delhi",
+            "city": "New Delhi",
+            "source": "https://www.aiims.edu/index.php/en"
+        },
+        {
+            "group": "fortis",
+            "name": "Fortis Escorts Heart Institute, New Delhi",
+            "city": "New Delhi",
+            "care_type": "cardiac",
+            "source": "https://www.fortishealthcare.com/hospitals"
+        },
+        {
+            "group": "apollo",
+            "name": "Indraprastha Apollo Hospitals, New Delhi",
+            "city": "New Delhi",
+            "aliases": [
+                "apollo-hospitals-delhi-delhi"
+            ],
+            "source": "https://www.apollohospitals.com/corporate/careers/why-work/our-locations.html"
+        },
+        {
+            "group": "sci",
+            "name": "SCI International Hospital, New Delhi",
+            "city": "New Delhi",
+            "source": "https://www.scihospital.com/"
+        },
+        {
+            "group": "nova",
+            "name": "Nova IVF Fertility, New Delhi",
+            "city": "New Delhi",
+            "care_type": "fertility",
+            "source": "https://www.novaivffertility.com/ivf-centre/delhi-ncr"
+        },
+        {
+            "group": "desun",
+            "name": "Desun Hospital, Kolkata",
+            "city": "Kolkata",
+            "source": "https://desunhospital.com/"
+        },
+        {
+            "group": "apollo",
+            "name": "Apollo Multispeciality Hospitals, EM Bypass, Kolkata",
+            "city": "Kolkata",
+            "aliases": [
+                "apollo-multispeciality-hospitals-em-bypass-kolkata-kolkata"
+            ],
+            "source": "https://www.apollohospitals.com/international-patient-services/hospitals"
+        },
+        {
+            "group": "indira",
+            "name": "Indira IVF, Hiland Park, Kolkata",
+            "city": "Kolkata",
+            "care_type": "fertility",
+            "source": "https://www.indiraivf.com/west-bengal/best-ivf-center-in-kolkata"
+        },
+        {
+            "group": "nova",
+            "name": "Nova IVF Fertility, Kolkata",
+            "city": "Kolkata",
+            "care_type": "fertility",
+            "source": "https://www.novaivffertility.com/ivf-centre/kolkata"
+        },
+        {
+            "group": "narayana",
+            "name": "Rabindranath Tagore International Institute of Cardiac Sciences",
+            "city": "Kolkata",
+            "source": "https://www.narayanahealth.org/hospitals-clinics/kolkata/rabindranath-tagore-international-institute-cardiac-sciences"
+        },
+        {
+            "group": "aig",
+            "name": "AIG Hospitals, Gachibowli",
+            "city": "Hyderabad",
+            "source": "https://www.aighospitals.com/"
+        },
+        {
+            "group": "yashoda",
+            "name": "Yashoda Hospitals, Secunderabad",
+            "city": "Hyderabad",
+            "source": "https://www.yashodahospitals.com/locations/secunderabad/"
+        },
+        {
+            "group": "miot",
+            "name": "MIOT International, Chennai",
+            "city": "Chennai",
+            "source": "https://www.miotinternational.com/"
+        },
+        {
+            "group": "mgm",
+            "name": "MGM Healthcare, Chennai",
+            "city": "Chennai",
+            "source": "https://mgmhealthcare.in/"
+        },
+        {
+            "group": "gleneagles",
+            "name": "Gleneagles Hospital, Perumbakkam",
+            "city": "Chennai",
+            "source": "https://www.gleneagleshospitals.co.in/chennai/perumbakkam"
+        },
+        {
+            "group": "sri-ramachandra",
+            "name": "Sri Ramachandra Medical Centre, Porur",
+            "city": "Chennai",
+            "source": "https://srmc.sriramachandra.edu/"
+        },
+        {
+            "group": "rela",
+            "name": "Rela Hospital, Chromepet",
+            "city": "Chennai",
+            "source": "https://www.relainstitute.com/about-us/"
+        },
+        {
+            "group": "kkr",
+            "name": "KKR ENT Hospital, Chennai",
+            "city": "Chennai",
+            "care_type": "ent",
+            "source": "https://www.kkrenthospital.org/about-us.html"
+        },
+        {
+            "group": "manvi",
+            "name": "Manvi Hospitals, Vijayawada",
+            "city": "Vijayawada",
+            "source": "https://manvihospitals.com/"
+        },
+        {
+            "group": "cfc",
+            "name": "Chennai Fertility Centre",
+            "city": "Chennai",
+            "care_type": "fertility",
+            "source": "https://chennaifertilitycenter.com/"
+        },
+        {
+            "group": "iswarya",
+            "name": "Iswarya Fertility Centre, Adyar",
+            "city": "Chennai",
+            "care_type": "fertility",
+            "source": "https://www.iswaryafertility.com/contact"
+        },
+        {
+            "group": "archana",
+            "name": "Dr Archana IVF & Women Centre, Anna Nagar",
+            "city": "Chennai",
+            "care_type": "fertility",
+            "source": "https://drarchanaivf.com/"
+        },
+        {
+            "group": "jeevan-mithra",
+            "name": "Jeevan Mithra Fertility & Women Care Centre",
+            "city": "Chennai",
+            "care_type": "fertility",
+            "source": "https://jeevanmithrafertilitycentre.com/"
+        },
+        {
+            "group": "nova",
+            "name": "Nova IVF Fertility, Chennai",
+            "city": "Chennai",
+            "care_type": "fertility",
+            "source": "https://www.novaivffertility.com/ivf-centre/chennai"
+        },
+        {
+            "group": "care",
+            "name": "CARE Hospitals, Banjara Hills",
+            "city": "Hyderabad",
+            "source": "https://www.carehospitals.com/hospitals/hyderabad/care-hospital-banjara-hills"
+        },
+        {
+            "group": "samitivej",
+            "name": "Samitivej Sukhumvit Hospital",
+            "city": "Bangkok",
+            "country": "Thailand",
+            "source": "https://www.samitivejhospitals.com/about-us"
+        },
+        {
+            "group": "agarwal",
+            "name": "Dr Agarwals Eye Hospital, Chennai",
+            "city": "Chennai",
+            "care_type": "eye",
+            "source": "https://www.dragarwal.com/eye-hospitals/chennai/"
+        },
+        {
+            "group": "rainbow",
+            "name": "Rainbow Children's Hospital & BirthRight, Banjara Hills",
+            "city": "Hyderabad",
+            "care_type": "women-children",
+            "source": "https://www.rainbowhospitals.in/our-centre/Hyderabad/banjara-hills-road"
+        },
+        {
+            "group": "cmri",
+            "name": "The Calcutta Medical Research Institute (CMRI)",
+            "city": "Kolkata",
+            "source": "https://www.ckabirlagroup.com/cmri"
+        },
+        {
+            "group": "ainu",
+            "name": "Asian Institute of Nephrology and Urology, Hyderabad",
+            "city": "Hyderabad",
+            "care_type": "kidney",
+            "source": "https://www.ainuindia.org/hyderabad/"
+        },
+        {
+            "group": "hetaiheng",
+            "name": "Shijiazhuang Hetaiheng Hospital",
+            "city": "Shijiazhuang",
+            "country": "China",
+            "care_type": "kidney",
+            "source": "https://www.hetaihenghospital.com/contact-us.html"
+        },
+        {
+            "group": "hygeia",
+            "name": "Chongqing Hygeia Hospital",
+            "city": "Chongqing",
+            "country": "China",
+            "care_type": "cancer",
+            "source": "https://www.hygeia-global.com/doctors_en.html"
+        }
+    ],
+    "pending": [
+        {
+            "name": "HCG Cancer Centre - Delhi NCR",
+            "reason": "Current official centre directory does not establish an active branch; historic SMH Curie references are insufficient."
+        },
+        {
+            "name": "HCG Cancer Centre - Hyderabad",
+            "reason": "Current official centre directory does not establish this branch; Hyderabad investor-services address is not a hospital."
+        },
+        {
+            "name": "Kolkata Fertility Centre",
+            "reason": "Exact institution and branch need confirmation; not substituted with a similarly named clinic."
+        }
+    ],
+    "notes": [
+        "Max Hospital - Bengaluru excluded at user's request.",
+        "Marevi clarified by user as Manvi Hospitals. Official site places it in Vijayawada, not Chennai.",
+        "SRIHER is represented by Sri Ramachandra Medical Centre, not duplicated as a separate hospital.",
+        "This catalogue establishes identity/location only. No partnership, ranking, accreditation, clinical outcome, transplant eligibility or doctor availability is inferred.",
+        "Existing records and physician affiliations are preserved. City aliases match Bengaluru/Bangalore and New Delhi/Delhi.",
+        "City-level Nova, AINU and Dr Agarwals entries require exact branch confirmation during appointment coordination."
+    ]
+}

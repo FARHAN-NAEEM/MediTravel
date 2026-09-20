@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'title' => 'Find a hospital',
+    'intro' => 'Explore hospitals by location and type of care. Our Bangladesh team can help coordinate your next step.',
+    'search' => 'Hospital or city', 'search_placeholder' => 'Search Apollo, Chennai, Manvi...',
+    'country' => 'Country', 'city' => 'City', 'group' => 'Hospital group', 'care' => 'Type of care',
+    'all_countries' => 'All countries', 'all_cities' => 'All cities', 'all_groups' => 'All hospital groups', 'all_care' => 'All types of care',
+    'filter' => 'Find hospitals', 'clear' => 'Clear filters', 'all' => 'All hospitals',
+    'results' => ':count hospitals found', 'browse_group' => 'Browse by hospital group', 'more_groups' => 'More hospital groups',
+    'empty' => 'No hospitals match these filters.', 'empty_help' => 'Try a different city or group, or ask our team for help.',
+    'details' => 'View hospital', 'support' => 'Request appointment support',
+    'support_title' => 'Need help choosing a hospital?',
+    'support_copy' => 'Tell us the type of care and destination you are considering. We can help you compare options and request an appointment.',
+    'talk' => 'Talk to our team', 'whatsapp' => 'Chat on WhatsApp',
+    'send_request' => 'Request support',
+    'whatsapp_message' => 'Hello Asian Health Connect, I would like appointment support for :hospital in :city.',
+    'overview' => 'About this hospital', 'location' => 'Location', 'source' => 'Official hospital website',
+    'reviewed' => 'Directory details reviewed :date',
+    'directory_note' => 'Hospital names and logos identify the institutions listed. A directory listing does not imply an official partnership. Branch, specialist, fees and appointment availability must be confirmed with the hospital.',
+    'appointment_note' => 'This is a request for coordination, not a confirmed booking. Clinical advice and treatment eligibility are determined by the hospital.',
+    'our_support' => 'Support from Bangladesh',
+    'steps' => ['Share your care needs', 'Discuss hospital and specialist options', 'Request an appointment and travel guidance'],
+    'doctors_empty' => 'The doctor list for this hospital is being updated. Contact our team to request a suitable specialist.',
+    'care_types' => ['multi-specialty' => 'Multispecialty care', 'cardiac' => 'Cardiac care', 'cancer' => 'Cancer care', 'fertility' => 'Fertility & IVF', 'eye' => 'Eye care', 'kidney' => 'Kidney & urology', 'ent' => 'ENT', 'women-children' => 'Women & children'],
+    'locations' => ['Bangalore' => 'Bengaluru', 'Delhi' => 'New Delhi', 'Gurgaon' => 'Gurugram'],
+];

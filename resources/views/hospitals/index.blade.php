@@ -1,82 +1,74 @@
-<x-layouts.app :title="__('site.pages.hospital_directory') . ' - Asian Health Connect'">
-    <section class="container-page py-10">
-        <h1 class="section-title">{{ __('site.pages.hospital_directory') }}</h1>
-        <form class="mt-6 grid gap-3 rounded-lg bg-white p-4 shadow-sm md:grid-cols-4">
-            <input name="q" value="{{ request('q') }}" class="rounded-md border-slate-200 md:col-span-2" placeholder="{{ __('site.common.search_hospital') }}">
-            <select name="city" class="rounded-md border-slate-200">
-                <option value="">{{ __('site.common.all_cities') }}</option>
-                @foreach ($cities as $city)
-                    <option value="{{ $city->slug }}" @selected(request('city') === $city->slug)>{{ $city->name }}, {{ $city->country->name }}</option>
-                @endforeach
-            </select>
-            <button class="btn-primary">{{ __('site.common.filter') }}</button>
-        </form>
-        <div class="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-            @forelse ($hospitals as $hospital)
-                @php($cardHighlight = $hospital->cardHighlight())
-                <a
-                    href="{{ route('hospitals.show', $hospital) }}"
-                    class="group card flex h-full min-w-0 flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:border-tealTrust/30 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-tealTrust focus:ring-offset-2"
-                >
-                    <div class="relative flex h-44 items-center justify-center overflow-hidden border-b border-tealTrust/10 bg-[#edf7f6]">
-                        <div class="absolute inset-x-0 top-0 h-1 bg-tealTrust"></div>
-                        <img
-                            src="{{ asset('images/hospital-card-illustration.svg') }}"
-                            alt=""
-                            aria-hidden="true"
-                            width="480"
-                            height="240"
-                            loading="lazy"
-                            decoding="async"
-                            class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-[1.03]"
-                        >
-                        @if ($hospital->is_featured)
-                            <span class="absolute right-3 top-3 rounded-md border border-white/80 bg-white/95 px-2.5 py-1 text-xs font-bold text-tealTrust shadow-sm">
-                                {{ __('site.hospital_cards.featured') }}
-                            </span>
-                        @endif
-                    </div>
-
-                    <div class="flex flex-1 flex-col p-5">
-                        <h2 class="readable-heading text-lg font-bold leading-7 text-navyDeep transition group-hover:text-tealTrust">
-                            {{ $hospital->name }}
-                        </h2>
-
-                        <div class="mt-2 flex items-start gap-2 text-sm text-slate-600">
-                            <svg class="mt-0.5 h-4 w-4 shrink-0 text-tealTrust" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s6-5.3 6-11a6 6 0 1 0-12 0c0 5.7 6 11 6 11Z"/>
-                                <circle cx="12" cy="10" r="2.2"/>
-                            </svg>
-                            <span>{{ $hospital->city->name }}, {{ $hospital->city->country->name }}</span>
-                        </div>
-
-                        @if (filled($hospital->accreditation))
-                            <div class="mt-3 flex items-start gap-2 text-sm font-medium text-tealTrust">
-                                <svg class="mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3 5.5 5.7v5.8c0 4.2 2.7 7.9 6.5 9.5 3.8-1.6 6.5-5.3 6.5-9.5V5.7L12 3Z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4"/>
-                                </svg>
-                                <span>{{ $hospital->accreditation }}</span>
-                            </div>
-                        @endif
-
-                        @if ($cardHighlight)
-                            <div class="mt-5 flex items-start gap-2.5 border-l-2 border-accent bg-slate-50 px-3 py-2.5 text-sm leading-6 text-slate-700">
-                                <svg class="mt-1 h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21C8.5 17.5 4 14.4 4 9.5A4.5 4.5 0 0 1 12 6.7a4.5 4.5 0 0 1 8 2.8c0 4.9-4.5 8-8 11.5Z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 12h2l1.2-2.5 2.2 5 1.1-2.5h2.5"/>
-                                </svg>
-                                <span class="text-wrap-anywhere">{{ $cardHighlight }}</span>
-                            </div>
-                        @endif
-                    </div>
-                </a>
-            @empty
-                <div class="card px-6 py-10 text-center text-slate-600 sm:col-span-2 xl:col-span-3">
-                    {{ __('site.hospital_cards.no_results') }}
+<x-layouts.app title="{{ __('hospitals.title') }} - Asian Health Connect">
+    <section class="hospital-directory">
+        <div class="container-page">
+            <nav class="mb-5 text-sm text-slate-500" aria-label="Breadcrumb"><a href="{{ route('home') }}">{{ __('site.nav.home') }}</a><span aria-hidden="true" class="mx-2">/</span>{{ __('site.nav.hospitals') }}</nav>
+            <h1 class="section-title">{{ __('hospitals.title') }}</h1>
+            <p class="mt-3 max-w-3xl leading-7 text-slate-600">{{ __('hospitals.intro') }}</p>
+            <form action="{{ route('hospitals.index') }}#hospital-results" method="GET" class="hospital-filters" x-data="{ country: @js($filters['country'] ?? ''), city: @js($filters['city'] ?? '') }">
+                <div class="hospital-filters__search">
+                    <label for="hospital-search">{{ __('hospitals.search') }}</label>
+                    <input id="hospital-search" name="q" value="{{ $search }}" maxlength="120" placeholder="{{ __('hospitals.search_placeholder') }}" type="search">
                 </div>
-            @endforelse
+                <div>
+                    <label for="hospital-country">{{ __('hospitals.country') }}</label>
+                    <select id="hospital-country" name="country" x-model="country" @change="city = ''">
+                        <option value="">{{ __('hospitals.all_countries') }}</option>
+                        @foreach ($countries as $country)<option value="{{ $country->slug }}" @selected(($filters['country'] ?? '') === $country->slug)>{{ trans('hospitals.locations')[$country->name] ?? $country->name }}</option>@endforeach
+                    </select>
+                </div>
+                <div>
+                    <label for="hospital-city">{{ __('hospitals.city') }}</label>
+                    <select id="hospital-city" name="city" x-model="city">
+                        <option value="">{{ __('hospitals.all_cities') }}</option>
+                        @foreach ($cities as $city)<option value="{{ $city->slug }}" :disabled="country !== '' && country !== @js($city->country->slug)" @selected(($filters['city'] ?? '') === $city->slug)>{{ trans('hospitals.locations')[$city->name] ?? $city->name }}</option>@endforeach
+                    </select>
+                </div>
+                <div>
+                    <label for="hospital-group">{{ __('hospitals.group') }}</label>
+                    <select id="hospital-group" name="group">
+                        <option value="">{{ __('hospitals.all_groups') }}</option>
+                        @foreach ($groups as $group)<option value="{{ $group->slug }}" @selected(($filters['group'] ?? '') === $group->slug)>{{ $group->name }}</option>@endforeach
+                    </select>
+                </div>
+                <div>
+                    <label for="hospital-care">{{ __('hospitals.care') }}</label>
+                    <select id="hospital-care" name="care">
+                        <option value="">{{ __('hospitals.all_care') }}</option>
+                        @foreach (\App\Models\Hospital::CARE_TYPES as $care)<option value="{{ $care }}" @selected(($filters['care'] ?? '') === $care)>{{ __('hospitals.care_types.'.$care) }}</option>@endforeach
+                    </select>
+                </div>
+                <button class="btn-primary gap-2"><x-heroicon-o-magnifying-glass class="h-5 w-5 shrink-0" />{{ __('hospitals.filter') }}</button>
+            </form>
+            @if ($groups->isNotEmpty())
+                <div class="hospital-brands hospital-brands--primary" aria-label="{{ __('hospitals.browse_group') }}">
+                    <a href="{{ route('hospitals.index', array_filter(\Illuminate\Support\Arr::except($filters, ['group']))) }}" class="hospital-brand {{ empty($filters['group']) ? 'hospital-brand--active' : '' }}" @if(empty($filters['group'])) aria-current="true" @endif><x-heroicon-o-building-office-2 class="h-8 w-8 text-tealTrust" /><span>{{ __('hospitals.all') }}</span></a>
+                    @foreach ($groups->take(7) as $group)@include('hospitals.partials.brand')@endforeach
+                </div>
+                @if ($groups->count() > 7)
+                    <details class="hospital-brands-more" @if($groups->skip(7)->contains('slug', $filters['group'] ?? '')) open @endif>
+                        <summary>{{ __('hospitals.more_groups') }} ({{ $groups->count() - 7 }})</summary>
+                        <div class="hospital-brands">@foreach ($groups->skip(7) as $group)@include('hospitals.partials.brand')@endforeach</div>
+                    </details>
+                @endif
+            @endif
+        </div>
+    </section>
+    <section class="container-page py-8" id="hospital-results" aria-label="{{ __('site.nav.hospitals') }}">
+        <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
+            <h2 class="text-lg font-semibold">{{ __('hospitals.results', ['count' => $hospitals->total()]) }}</h2>
+            @if (count(array_filter($filters)))<a class="text-sm font-semibold text-tealTrust underline underline-offset-4" href="{{ route('hospitals.index') }}">{{ __('hospitals.clear') }}</a>@endif
+        </div>
+        <div class="hospital-grid">
+            @forelse ($hospitals as $hospital)<x-hospital-card :hospital="$hospital" />
+            @empty<div class="col-span-full py-12 text-center"><x-heroicon-o-magnifying-glass class="mx-auto mb-4 h-8 w-8 text-slate-400" /><h3 class="font-bold">{{ __('hospitals.empty') }}</h3><p class="mt-2 text-slate-600">{{ __('hospitals.empty_help') }}</p></div>@endforelse
         </div>
         <div class="mt-8">{{ $hospitals->links() }}</div>
     </section>
+    <section class="hospital-support">
+        <div class="container-page flex flex-col justify-between gap-5 md:flex-row md:items-center">
+            <div class="max-w-2xl"><h2 class="text-xl font-bold">{{ __('hospitals.support_title') }}</h2><p class="mt-2 leading-7 text-slate-600">{{ __('hospitals.support_copy') }}</p></div>
+            <a href="{{ route('contact') }}" class="btn-primary shrink-0 gap-2"><x-heroicon-o-chat-bubble-left-right class="h-5 w-5" />{{ __('hospitals.talk') }}</a>
+        </div>
+    </section>
+    <p class="container-page py-6 text-xs leading-6 text-slate-500">{{ __('hospitals.directory_note') }}</p>
 </x-layouts.app>

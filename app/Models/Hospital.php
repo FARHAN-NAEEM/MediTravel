@@ -7,12 +7,45 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 
 class Hospital extends Model
 {
     use HasLocalizedContent;
 
     protected $guarded = [];
+
+    public const CARE_TYPES = ['multi-specialty', 'cardiac', 'cancer', 'fertility', 'eye', 'kidney', 'ent', 'women-children'];
+
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(HospitalGroup::class, 'hospital_group_id');
+    }
+
+    public function logoUrl(): ?string
+    {
+        return filled($this->logo) ? Storage::disk('public')->url($this->logo) : $this->group?->logoUrl();
+    }
+
+    public function photoUrl(): ?string
+    {
+        $photo = $this->images[0] ?? null;
+
+        return filled($photo) ? Storage::disk('public')->url($photo) : null;
+    }
+
+    public function logoNeedsDarkBackground(): bool
+    {
+        return blank($this->logo) && ($this->group?->logoNeedsDarkBackground() ?? false);
+    }
+
+    public function locationLabel(): string
+    {
+        $names = trans('hospitals.locations');
+
+        return collect([$this->city?->name, $this->country?->name])->filter()
+            ->map(fn ($name) => $names[$name] ?? $name)->implode(', ');
+    }
 
     public function cardHighlight(): ?string
     {
@@ -38,6 +71,7 @@ class Hospital extends Model
         return [
             'images' => 'array',
             'is_featured' => 'boolean',
+            'directory_reviewed_at' => 'date',
         ];
     }
 

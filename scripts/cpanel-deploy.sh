@@ -54,6 +54,7 @@ chmod -R ug+rwX storage bootstrap/cache
 "$PHP_BIN" artisan db:seed --class=TreatmentCatalogSeeder --force
 "$PHP_BIN" artisan db:seed --class=BanglaContentSeeder --force
 "$PHP_BIN" artisan doctors:import database/rosters/apollo-doctors-2026-09-17.csv --commit
+"$PHP_BIN" artisan db:seed --class=HospitalDirectorySeeder --force
 "$PHP_BIN" artisan optimize
 "$PHP_BIN" artisan queue:restart
 

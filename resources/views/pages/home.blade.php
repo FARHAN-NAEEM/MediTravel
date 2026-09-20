@@ -133,37 +133,7 @@
             </div>
             <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
                 @foreach ($featuredHospitals as $hospital)
-                    <a href="{{ route('hospitals.show', $hospital) }}" class="group card flex h-full min-w-0 flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:border-tealTrust/30 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-tealTrust focus:ring-offset-2">
-                        <div class="relative h-44 overflow-hidden border-b border-tealTrust/10 bg-[#edf7f6]">
-                            <div class="absolute inset-x-0 top-0 h-1 bg-tealTrust"></div>
-                            <img
-                                src="{{ asset('images/hospital-card-illustration.svg') }}"
-                                alt=""
-                                aria-hidden="true"
-                                width="480"
-                                height="240"
-                                loading="lazy"
-                                decoding="async"
-                                class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-[1.03]"
-                            >
-                            <span class="absolute bottom-3 right-3 grid h-9 w-9 place-items-center rounded-md border border-white/80 bg-white/95 text-tealTrust shadow-sm transition group-hover:bg-tealTrust group-hover:text-white" aria-hidden="true">
-                                <x-heroicon-o-arrow-up-right class="h-4 w-4" />
-                            </span>
-                        </div>
-                        <div class="flex flex-1 flex-col p-5">
-                            <h3 class="readable-heading text-lg font-bold leading-7 text-navyDeep transition group-hover:text-tealTrust">{{ $hospital->name }}</h3>
-                            <div class="mt-2 flex items-start gap-2 text-sm text-slate-600">
-                                <x-heroicon-o-map-pin class="mt-0.5 h-4 w-4 shrink-0 text-tealTrust" />
-                                <span>{{ $hospital->city->name }}, {{ $hospital->country->name }}</span>
-                            </div>
-                            @if (filled($hospital->accreditation))
-                                <div class="mt-auto flex items-start gap-2 pt-4 text-sm font-medium text-tealTrust">
-                                    <x-heroicon-o-shield-check class="mt-0.5 h-4 w-4 shrink-0" />
-                                    <span>{{ $hospital->accreditation }}</span>
-                                </div>
-                            @endif
-                        </div>
-                    </a>
+                    <x-hospital-card :hospital="$hospital" />
                 @endforeach
             </div>
         </div>

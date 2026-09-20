@@ -8,6 +8,9 @@
 !/storage/app/public/.gitignore
 /storage/app/apollo-roster-raw.jsonl
 /storage/app/imports/
+/storage/app/*.sql
+/storage/app/*-failed-migration.ibd
+/storage/framework/testing/
 /storage/framework/cache/*
 !/storage/framework/cache/.gitignore
 /storage/framework/sessions/*

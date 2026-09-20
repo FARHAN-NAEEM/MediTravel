@@ -12,8 +12,7 @@
     @keydown.escape.window="mobileNavOpen = false"
 >
     @php
-        $whatsapp = $primaryWhatsapp?->normalizedNumber()
-            ?: preg_replace('/\D+/', '', $siteSettings['whatsapp_number'] ?? config('services.whatsapp.number', '8801700000000'));
+        $whatsapp = app(\App\Services\SiteContactService::class)->primaryWhatsappNumber();
         $currentLocale = app()->getLocale();
     @endphp
 

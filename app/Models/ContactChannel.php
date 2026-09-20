@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Concerns\ClearsSiteContactCache;
 use App\Models\Concerns\HasLocalizedContent;
+use App\Support\WhatsappNumber;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -62,7 +63,9 @@ class ContactChannel extends Model
 
     public function normalizedNumber(): string
     {
-        return preg_replace('/\D+/', '', $this->value) ?? '';
+        return $this->type === 'whatsapp'
+            ? WhatsappNumber::normalize($this->value)
+            : (preg_replace('/\D+/', '', $this->value) ?? '');
     }
 
     public function destinationUrl(): string

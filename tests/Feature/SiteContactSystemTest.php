@@ -7,10 +7,12 @@ use App\Filament\Resources\OfficeLocationResource;
 use App\Filament\Resources\SocialLinkResource;
 use App\Models\ContactChannel;
 use App\Models\OfficeLocation;
+use App\Models\Setting;
 use App\Models\SocialLink;
 use App\Models\User;
 use App\Services\SiteContactService;
 use App\Support\AdminAccess;
+use App\Support\WhatsappNumber;
 use Database\Seeders\SiteContactSeeder;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -86,6 +88,46 @@ class SiteContactSystemTest extends TestCase
             'https://wa.me/8801900000002?text=',
             (string) $response->headers->get('Location'),
         );
+    }
+
+    public function test_local_whatsapp_numbers_work_in_links_and_inquiry_redirects(): void
+    {
+        $channel = ContactChannel::query()->create([
+            'type' => 'whatsapp',
+            'label' => 'Patient Support',
+            'value' => '01704 053905',
+            'is_primary' => true,
+            'is_active' => true,
+        ]);
+
+        $this->assertSame('https://wa.me/8801704053905', $channel->destinationUrl());
+        $this->assertSame('8801704053905', app(SiteContactService::class)->primaryWhatsappNumber());
+        $this->assertSame('01704 053905', $channel->fresh()->value);
+        $this->get('/hospitals')->assertOk()
+            ->assertSee('href="https://wa.me/8801704053905"', false)
+            ->assertDontSee('href="https://wa.me/01704053905"', false);
+
+        $response = $this->post('/inquiries', [
+            'name' => 'WhatsApp Format Test',
+            'phone' => '01700000000',
+            'type' => 'appointment',
+        ]);
+        $this->assertStringStartsWith(
+            'https://wa.me/8801704053905?text=',
+            (string) $response->headers->get('Location'),
+        );
+    }
+
+    public function test_legacy_whatsapp_settings_are_normalized_without_changing_international_numbers(): void
+    {
+        Setting::query()->create(['key' => 'whatsapp_number', 'value' => '01704053905']);
+
+        $this->assertSame('8801704053905', app(SiteContactService::class)->primaryWhatsappNumber());
+        $this->get('/hospitals')->assertOk()
+            ->assertSee('href="https://wa.me/8801704053905"', false);
+        $this->assertSame('8801704053905', WhatsappNumber::normalize('+880 1704-053905'));
+        $this->assertSame('919899187776', WhatsappNumber::normalize('+91 98991 87776'));
+        $this->assertSame('', WhatsappNumber::normalize(''));
     }
 
     public function test_footer_shows_only_active_channels_named_social_links_and_eight_offices(): void

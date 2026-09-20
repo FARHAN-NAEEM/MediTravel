@@ -6,7 +6,7 @@ use App\Models\ContactChannel;
 use App\Models\OfficeLocation;
 use App\Models\Setting;
 use App\Models\SocialLink;
-use Illuminate\Support\Collection;
+use App\Support\WhatsappNumber;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
 
@@ -52,7 +52,7 @@ class SiteContactService
 
         $value ??= (string) config('services.whatsapp.number', '8801700000000');
 
-        return preg_replace('/\D+/', '', $value) ?: '8801700000000';
+        return WhatsappNumber::normalize($value) ?: '8801700000000';
     }
 
     public function forget(): void

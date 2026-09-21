@@ -49,6 +49,7 @@ fi
 chmod -R ug+rwX storage bootstrap/cache
 
 "$PHP_BIN" artisan config:clear
+"$PHP_BIN" scripts/deployment-preflight.php
 "$PHP_BIN" artisan migrate --force
 "$PHP_BIN" artisan db:seed --class=BrandedHeroSlidesSeeder --force
 "$PHP_BIN" artisan db:seed --class=TreatmentCatalogSeeder --force

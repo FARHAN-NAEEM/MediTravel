@@ -1,0 +1,10 @@
+@extends('referrals.layout')
+@section('title', 'রেফারেল কেস')
+@section('content')
+<div class="referral-title"><h1>রেফারেল কেস</h1>@if(auth()->user()->isOwner())<a class="referral-button" href="{{ route('referral-ops.manual') }}"><x-heroicon-o-plus class="h-5 w-5" />ম্যানুয়াল রেফারেল</a>@endif</div>
+<dl class="referral-metrics"><div><dt>নতুন কেস</dt><dd>{{ $counts['new'] }}</dd></div><div><dt>ফলোআপ বাকি</dt><dd>{{ $counts['due'] }}</dd></div><div><dt>সম্পন্ন</dt><dd>{{ $counts['completed'] }}</dd></div></dl>
+<form method="get" class="referral-filter"><label>রেফারেন্স<input name="q" value="{{ request('q') }}" type="search"></label><label>অবস্থা<select name="status"><option value="">সব অবস্থা</option>@foreach(\App\Models\ReferralCase::statuses() as $key => $label)<option value="{{ $key }}" @selected(request('status') === $key)>{{ $label }}</option>@endforeach</select></label><label class="referral-check"><input type="checkbox" name="due" value="1" @checked(request('due'))>ফলোআপ বাকি</label><button class="referral-button secondary"><x-heroicon-o-magnifying-glass class="h-4 w-4" />খুঁজুন</button><a href="{{ route('referral-ops.index') }}" class="referral-link">সব</a></form>
+<div class="referral-table-wrap"><table class="referral-table"><thead><tr><th>রেফারেন্স</th><th>রোগী</th><th>এজেন্ট</th><th>হাসপাতাল</th><th>অবস্থা</th><th>দায়িত্বপ্রাপ্ত</th><th>ফলোআপ</th></tr></thead><tbody>
+@forelse($cases as $case)<tr><td><a class="referral-link" href="{{ route('referral-ops.show', $case) }}">{{ $case->reference }}</a><small>{{ $case->created_at->format('d M Y') }}</small></td><td>{{ $case->patient->name }}</td><td>{{ $case->agent->business_name }}</td><td>{{ $case->hospital?->name ?? '—' }}</td><td><span class="referral-badge">{{ \App\Models\ReferralCase::statuses()[$case->status] }}</span></td><td>{{ $case->assignee?->name ?? 'নির্ধারিত নয়' }}</td><td>{{ $case->follow_up_on?->format('d M Y') ?? '—' }}</td></tr>@empty<tr><td colspan="7" class="referral-empty">কোনো কেস পাওয়া যায়নি।</td></tr>@endforelse
+</tbody></table></div><div class="mt-5">{{ $cases->links() }}</div>
+@endsection

@@ -9,7 +9,7 @@
         "barryvdh/laravel-dompdf": "^3.0",
         "filament/filament": "^3.2",
         "intervention/image": "^3.9",
-        "laravel/framework": "^11.0",
+        "laravel/framework": "^12.61.1",
         "laravel/tinker": "^2.9",
         "mcamara/laravel-localization": "^2.0",
         "spatie/laravel-permission": "^6.9",
@@ -61,7 +61,7 @@
         "sort-packages": true,
         "policy": {
             "advisories": {
-                "block": false,
+                "block": true,
                 "audit": "report"
             }
         },

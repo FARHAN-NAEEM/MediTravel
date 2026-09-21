@@ -73,3 +73,19 @@ Alpine.data('documentChecklist', (storageKey, documentIds) => ({
 }));
 
 Alpine.start();
+
+const referralQr = document.querySelector('[data-referral-qr]');
+if (referralQr) {
+    import('qrcode').then(async ({ default: QRCode }) => {
+        await QRCode.toCanvas(referralQr, referralQr.dataset.referralQr, {
+            width: 640, margin: 4, errorCorrectionLevel: 'M',
+        });
+        referralQr.style.width = '160px';
+        referralQr.style.height = '160px';
+        const download = document.querySelector('[data-qr-download]');
+        if (download) {
+            download.href = referralQr.toDataURL('image/png');
+            download.hidden = false;
+        }
+    }).catch(() => { referralQr.hidden = true; });
+}

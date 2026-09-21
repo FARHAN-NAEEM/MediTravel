@@ -11,6 +11,8 @@ use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\TrackController;
 use Illuminate\Support\Facades\Route;
 
+require __DIR__.'/referrals.php';
+
 Route::get('/language/{locale}', function (string $locale) {
     abort_unless(in_array($locale, ['bn', 'en'], true), 404);
 

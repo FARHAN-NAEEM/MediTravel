@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'featured_filter' => 'ফিচার্ড',
+    'hospitals_subtitle' => 'চিকিৎসার গন্তব্য, হাসপাতাল ও বিশেষায়িত সেবার বিকল্প।',
+    'hospital_filter_label' => 'দেশ অনুযায়ী হাসপাতাল',
+    'country_hospitals' => ':country-এর হাসপাতাল',
+    'country_hospitals_empty' => ':country-এর কোনো হাসপাতাল এখনো যোগ করা হয়নি।',
+    'featured_empty' => 'কোনো ফিচার্ড হাসপাতাল এখনো যোগ করা হয়নি।',
+    'hospital_countries' => ['Thailand' => 'থাইল্যান্ড', 'China' => 'চীন', 'India' => 'ভারত', 'Singapore' => 'সিঙ্গাপুর', 'Malaysia' => 'মালয়েশিয়া'],
     'destinations' => 'গন্তব্য দেশ',
     'hero_subhead' => 'বাংলায় সহায়তা নিয়ে ডাক্তার ও হাসপাতাল খুঁজুন, অ্যাপয়েন্টমেন্টের অনুরোধ করুন এবং রেফারেন্স নম্বর দিয়ে অগ্রগতি দেখুন।',
     'title' => 'চিকিৎসার পরবর্তী ধাপটি খুঁজুন',

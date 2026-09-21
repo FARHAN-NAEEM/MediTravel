@@ -78,7 +78,7 @@ class HospitalCardTest extends TestCase
 
         $response = $this->get('/')->assertOk();
         $cards = (new Crawler($response->getContent()))
-            ->filterXPath('//a[.//img[contains(@src, "hospital-card-illustration.svg")]]');
+            ->filterXPath('//*[@data-hospital-panel="featured"]//a[.//img[contains(@src, "hospital-card-illustration.svg")]]');
         $cardText = implode(' ', $cards->each(fn (Crawler $card) => $card->text()));
 
         foreach (['Apollo Hospitals Chennai', 'Fortis Hospital Kolkata', 'Apollo Hospitals, Delhi', 'Apollo Health City, Jubilee Hills, Hyderabad'] as $name) {

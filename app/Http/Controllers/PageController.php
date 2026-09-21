@@ -34,19 +34,27 @@ class PageController extends Controller
 
         $destinationCountries = Country::with([
             'hospitals' => fn ($query) => $query
-                ->with('city')
+                ->with('city', 'country', 'group')
+                ->orderByDesc('is_featured')
                 ->orderBy('sort_order')
-                ->orderBy('id'),
-        ])->get();
+                ->orderBy('id')
+                ->limit(4),
+        ])->orderBy('sort_order')->orderBy('name')->get();
 
-        $partnerMarkets = collect($destinationCountryNames)->map(
-            fn (string $name, string $key) => [
-                'key' => $key,
-                'country' => $destinationCountries->first(
+        $hospitalMarkets = collect($destinationCountryNames)->map(
+            function (string $name, string $key) use ($destinationCountries) {
+                $country = $destinationCountries->first(
                     fn (Country $country) => strcasecmp(trim($country->name), $name) === 0
-                ),
-            ]
+                );
+
+                return ['key' => $country?->slug ?? $key, 'name' => $name, 'country' => $country];
+            }
         )->values();
+        $knownCountryIds = $hospitalMarkets->pluck('country.id')->filter();
+
+        foreach ($destinationCountries->whereNotIn('id', $knownCountryIds) as $country) {
+            $hospitalMarkets->push(['key' => $country->slug, 'name' => $country->name, 'country' => $country]);
+        }
 
         return view('pages.home', [
             'featuredHospitals' => Hospital::with('city', 'country', 'group')
@@ -62,7 +70,7 @@ class PageController extends Controller
                 ->take(4)
                 ->get(),
             'featuredDoctors' => Doctor::with('hospital', 'department')->where('is_featured', true)->take(6)->get(),
-            'partnerMarkets' => $partnerMarkets,
+            'hospitalMarkets' => $hospitalMarkets,
             'services' => Service::take(9)->get(),
             'reviews' => Review::with('hospital')->where('is_published', true)->take(6)->get(),
             'heroImages' => HeroImage::where('is_active', true)->orderBy('sort_order')->orderByDesc('updated_at')->get(),

@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'featured_filter' => 'Featured',
+    'hospitals_subtitle' => 'Explore destinations, hospitals and specialist care options.',
+    'hospital_filter_label' => 'Hospitals by country',
+    'country_hospitals' => 'Hospitals in :country',
+    'country_hospitals_empty' => 'No hospitals have been added for :country yet.',
+    'featured_empty' => 'No featured hospitals have been added yet.',
+    'hospital_countries' => ['Thailand' => 'Thailand', 'China' => 'China', 'India' => 'India', 'Singapore' => 'Singapore', 'Malaysia' => 'Malaysia'],
     'destinations' => 'Destinations',
     'hero_subhead' => 'Find doctors and hospitals with Bangla-speaking support, request an appointment, and follow your inquiry with a reference number.',
     'title' => 'Find the next step for your care',

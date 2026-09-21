@@ -1,4 +1,22 @@
 @layer components {
+    .featured-hospitals { scroll-margin-top: 90px; }
+    .featured-hospitals__filters { display: flex; flex-wrap: wrap; gap: .4rem 1.25rem; margin-bottom: 1.5rem; border-bottom: 1px solid #dce4e9; }
+    .featured-hospitals__filter { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 46px; max-width: 100%; padding: .5rem .25rem; border-bottom: 3px solid transparent; font-size: .875rem; font-weight: 600; color: #526574; overflow-wrap: anywhere; transition: color 150ms, border-color 150ms; }
+    .featured-hospitals__filter:hover { color: #0d7d74; }
+    .featured-hospitals__filter[aria-pressed="true"] { border-color: #0d7d74; color: #0d7d74; }
+    .featured-hospitals__filter:focus-visible { outline: 2px solid #0d7d74; outline-offset: 3px; }
+    .featured-hospitals__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+    .featured-hospitals__empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; min-height: 260px; padding: 2rem 1rem; text-align: center; overflow-wrap: anywhere; }
+    @media (max-width: 639px) {
+        .featured-hospitals__filters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .25rem .75rem; }
+    }
+    @media (min-width: 640px) {
+        .featured-hospitals__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1024px) {
+        .featured-hospitals__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .featured-hospitals__results, .featured-hospitals__empty { min-height: 380px; }
+    }
     .hospital-directory { padding-block: 2rem 1.5rem; background: #fff; border-bottom: 1px solid #e1e8ec; }
     .hospital-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-block: 1.75rem; align-items: end; }
     .hospital-filters__search, .hospital-filters button { grid-column: 1 / -1; }

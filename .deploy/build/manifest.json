@@ -1,13 +1,25 @@
 {
+  "_browser-CqDbEFy1.js": {
+    "file": "assets/browser-CqDbEFy1.js",
+    "name": "browser",
+    "isDynamicEntry": true
+  },
   "resources/css/app.css": {
-    "file": "assets/app-CxE7dAE5.css",
+    "file": "assets/app-BbyrvfOd.css",
     "src": "resources/css/app.css",
-    "isEntry": true
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-B6-da2Au.js",
+    "file": "assets/app-0cDxFkrA.js",
     "name": "app",
     "src": "resources/js/app.js",
-    "isEntry": true
+    "isEntry": true,
+    "dynamicImports": [
+      "_browser-CqDbEFy1.js"
+    ]
   }
 }
